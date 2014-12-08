@@ -30,7 +30,7 @@
 // ===========================================================================
 //                         Definition of static attributes
 // ===========================================================================
-
+String::SIZE_MAX = 65535;
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
@@ -52,6 +52,15 @@ String::String(void)
 	capacity = phrase.capacity;
 }*/
 
+String::String(void)
+{
+	length=40;
+	capacity=60;
+	str = new char[capacity];
+	str= "coucou je vais bien.";
+	
+}
+
 // ===========================================================================
 //                                  Destructor
 // ===========================================================================
@@ -63,6 +72,7 @@ String::~String(void)
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
+<<<<<<< HEAD
 /*int String::GetMAX_SIZE(void) const
 {
 	return MAX_SIZE;
@@ -81,6 +91,27 @@ int String::GetCapacity(void) const
 char String::GetStr(int index) const
 {
 	return str[index];
+=======
+// Getters
+int String::GetSize(void) const
+{
+	return size;
+}
+
+// Methods
+int String::capacity() const
+{
+	int size_string_byte;
+
+	if((str.GetSize() + 20) < str.GetMAX_SIZE())
+	{
+		size_string_byte = str.GetSize() + 20;	
+	}
+	else{
+		size_string_byte = str.GetMAX_SIZE();
+	}
+	return size_string_byte;
+>>>>>>> 2647e12164c8d741c979485b86a7da5d9b870ad9
 }
 // ===========================================================================
 //                                Protected Methods

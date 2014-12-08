@@ -56,11 +56,19 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
+<<<<<<< HEAD
     /*char* Get_str(void) const;
     int GetMAX_SIZE(void) const;*/
     int GetLength(void) const;
     int GetCapacity(void) const;
     char GetStr(int index) const;
+=======
+<<<<<<< HEAD
+    int GetSize(void) const;
+=======
+    char* Get_str(void) const;
+>>>>>>> 431d956c45002e89eada6b59e8f111448eeffafc
+>>>>>>> 2647e12164c8d741c979485b86a7da5d9b870ad9
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -72,6 +80,7 @@ class String
     // =======================================================================
     //                              Public Methods
     // =======================================================================
+    size_t capacity() const;
 
     // =======================================================================
     //                             Public Attributes
@@ -106,8 +115,14 @@ class String
     //                             Protected Attributes
     // =======================================================================
     char* str;
+<<<<<<< HEAD
+    int size;
+    int capacity;
+    static int MAX_SIZE;
+=======
     int length;
     int capacity;
+>>>>>>> 431d956c45002e89eada6b59e8f111448eeffafc
 };
 
 
