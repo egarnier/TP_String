@@ -6,7 +6,7 @@ prog_main: prog_main.cpp String.o
 String.o: String.h String.cpp
 	g++ -Wall -lm -c -o  String.o String.cpp
 
-clean :
+clean:
 	rm *.o
 
 mrproper: clean
