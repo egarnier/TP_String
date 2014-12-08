@@ -41,6 +41,15 @@ String::String(const char* phrase)
 	capacity = phrase.capacity;
 }
 
+String::String(void)
+{
+	length=40;
+	capacity=60;
+	str = new char[capacity];
+	str= "coucou je vais bien.";
+	
+}
+
 // ===========================================================================
 //                                  Destructor
 // ===========================================================================
@@ -61,9 +70,11 @@ int String::GetSize(void) const
 // Methods
 int String::capacity() const
 {
+	int size_string_byte;
+
 	if((str.GetSize() + 20) < str.GetMAX_SIZE())
 	{
-	int size_string_byte = str.GetSize() + 20;	
+		size_string_byte = str.GetSize() + 20;	
 	}
 	else{
 		size_string_byte = str.GetMAX_SIZE();
