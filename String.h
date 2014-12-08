@@ -45,7 +45,8 @@ class String
     // =======================================================================
     //                               Constructors
     // =======================================================================
-    String(const char* phrase);
+    /*String(const char* phrase);*/
+    String(void);
 
     // =======================================================================
     //                                Destructor
@@ -55,7 +56,11 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-    char* Get_str(void) const;
+    /*char* Get_str(void) const;
+    int GetMAX_SIZE(void) const;*/
+    int GetLength(void) const;
+    int GetCapacity(void) const;
+    char GetStr(int index) const;
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -85,12 +90,12 @@ class String
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
-    };*/
+    };
     String(const String &model)
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
-    };
+    };*/
 
 
     // =======================================================================
@@ -109,7 +114,7 @@ class String
 // ===========================================================================
 //                              Getters' definitions
 // ===========================================================================
-char* Get_str(void){return str;}
+//char* Get_str(void){return str;}
 // ===========================================================================
 //                              Setters' definitions
 // ===========================================================================
