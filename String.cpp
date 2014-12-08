@@ -38,6 +38,7 @@ String::String(const char* phrase)
 {
 	str = phrase;
 	length = phrase.length;
+	capacity = phrase.capacity;
 }
 
 // ===========================================================================
