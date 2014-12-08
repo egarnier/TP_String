@@ -38,7 +38,17 @@
 // ===========================================================================
 int main(int argc, char* argv[])
 {
-  printf("Hello World !\n");
+  //String myString = new String("coucou");
+  String myString;
+  printf("La longueur de la string vaut : %d\n",myString.GetLength());
+  printf("La capacity de la string vaut : %d\n",myString.GetCapacity());
+  printf("La chaine est : ");
+  for (int i=0; i<myString.GetLength(); i++)
+  {
+  	printf("%c",myString.GetStr(i));
+  }
+  printf("\nHello World !\n");
+
 
   return 0;
 }
