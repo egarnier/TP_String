@@ -6,8 +6,8 @@
 
 
 
-#ifndef __TEMPLATE_CLASS_H__
-#define __TEMPLATE_CLASS_H__
+#ifndef __STRING_H__
+#define __STRING_H__
 
 
 // ===========================================================================
@@ -34,7 +34,7 @@
 
 
 
-class Template_class
+class String
 {
   public :
     
