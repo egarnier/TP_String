@@ -101,6 +101,8 @@ class String
     //                             Protected Attributes
     // =======================================================================
     char* str;
+    int length;
+    int capacity;
 };
 
 
