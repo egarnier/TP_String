@@ -37,7 +37,7 @@
 String::String(const char* phrase)
 {
 	str = phrase;
-	str = NULL;
+	length = phrase.length;
 }
 
 // ===========================================================================
