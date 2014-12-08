@@ -34,12 +34,23 @@
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
-String::String(const char* phrase)
+String::String(void)
+{
+	length = 4;
+	capacity = 10;
+	str = new char[length];
+	str[0] = 't';
+	str[1] = 'i';
+	str[2] = 't';
+	str[3] = 'o';
+}
+
+/*String::String(const char* phrase)
 {
 	str = phrase;
 	length = phrase.length;
 	capacity = phrase.capacity;
-}
+}*/
 
 // ===========================================================================
 //                                  Destructor
@@ -52,7 +63,25 @@ String::~String(void)
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
+/*int String::GetMAX_SIZE(void) const
+{
+	return MAX_SIZE;
+}*/
 
+int String::GetLength(void) const
+{
+	return length;
+}
+
+int String::GetCapacity(void) const
+{
+	return capacity;
+}
+
+char String::GetStr(int index) const
+{
+	return str[index];
+}
 // ===========================================================================
 //                                Protected Methods
 // ===========================================================================
