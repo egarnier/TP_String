@@ -34,13 +34,9 @@ size_t String::MAX_SIZE = 65535;
 // Constructor par défaut
 String::String(void)
 {
-	length_ = 4;
-	capacity_ = 10;
-	str = new char[capacity_];
-	str[0] = 't';
-	str[1] = 'i';
-	str[2] = 't';
-	str[3] = 'o';
+	length_ = 0;
+	capacity_ = 0;
+	str = NULL;
 }
 
 // Constructor a partir d'une c-string
@@ -70,13 +66,19 @@ String::String(const char* phrase)
 		str[j] = phrase[j];
 	}
 }
-	
+
+//copie constructor
 String::String(const String& sentence)
 {
 	length_ = sentence.length();
-	capacity_ = sentence.capacity();
-	str = new char[capacity_];
-	str = sentence.c_str();
+
+	str = new char[length_];
+
+	for (size_t i = 0; i < length_; ++i)
+	{
+		str[i] = sentence.str[i];
+	}
+
 }
 
 // ===========================================================================
@@ -135,6 +137,43 @@ void String::resize(size_t n, char c)
 			str[i] = c;
 		}
 		length_ = n;
+	}
+}
+
+
+
+//Method
+void String::clear(void)
+{
+	str[0] = '\0';
+	length_ = 0;
+}
+
+// Methods
+bool String::empty(void)
+{
+	bool is_empty;
+	if(length_ == 0){
+		is_empty = true;
+	}
+	else{
+		is_empty = false;
+	}
+	return is_empty;
+}
+
+void String::reserve (size_t n = 0)
+{
+	if(n>MAX_SIZE)
+	{
+		printf("The value is bigger than the maximum size allowed for a string, please change your value.\n");
+	}
+	else if(n>capacity_)
+	{
+		// code à rajouter : ajouter de la capacité
+	}
+	else{
+		// code à rajouter
 	}
 }
 
