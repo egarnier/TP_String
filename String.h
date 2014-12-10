@@ -58,11 +58,11 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-    int GetMAX_SIZE(void) const;
-    int length(void) const;
-    int capacity(void) const;
+    size_t GetMAX_SIZE(void) const;
+    size_t length(void) const;
+    size_t capacity(void) const;
     char* c_str(void) const;
-    int size(void) const;
+    size_t size(void) const;
 
     // =======================================================================
     //                            Accessors: setters
@@ -76,10 +76,13 @@ class String
     //                              Public Methods
     // =======================================================================
 
+
     void clear(void);
     String& operator= (const String& str_);
 
 
+
+    bool empty(void);
 
     // =======================================================================
     //                             Public Attributes
@@ -107,10 +110,10 @@ class String
     // =======================================================================
     //                             Protected Attributes
     // =======================================================================
-    static int MAX_SIZE;
+    static size_t MAX_SIZE;
     char* str;
-    int capacity_;
-    int length_;
+    size_t capacity_;
+    size_t length_;
 };
 
 

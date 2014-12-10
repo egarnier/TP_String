@@ -30,7 +30,7 @@
 // ===========================================================================
 //                         Definition of static attributes
 // ===========================================================================
-int String::MAX_SIZE = 65535;
+size_t String::MAX_SIZE = 65535;
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
@@ -38,13 +38,9 @@ int String::MAX_SIZE = 65535;
 // Constructor par défaut
 String::String(void)
 {
-	length_ = 4;
-	capacity_ = 10;
-	str = new char[capacity_];
-	str[0] = 't';
-	str[1] = 'i';
-	str[2] = 't';
-	str[3] = 'o';
+	length_ = 0;
+	capacity_ = 0;
+	str = NULL;
 }
 
 // Constructor a partir d'une c-string
@@ -52,7 +48,7 @@ String::String(const char* phrase)
 {
 	//Length
 	length_ = 0;
-	for (int i=0; i<MAX_SIZE; i++)
+	for (int i=0; i<(int)MAX_SIZE; i++)
 	{
 		if (phrase[i] != '\0')
 		{
@@ -69,7 +65,7 @@ String::String(const char* phrase)
 	
 	//String
 	str = new char[capacity_];
-	for (int j=0; j<length_; j++)
+	for (int j=0; j<(int)length_; j++)
 	{
 		str[j] = phrase[j];
 	}
@@ -100,21 +96,21 @@ String::~String(void)
 //                                 Public Methods
 // ===========================================================================
 // Getters
-int String::GetMAX_SIZE(void) const
+size_t String::GetMAX_SIZE(void) const
 {
 	return MAX_SIZE;
 }
 
-int String::length(void) const
+size_t String::length(void) const
 {
 	return length_;
 }
 
-int String::size(void) const
+size_t String::size(void) const
 {
 	return length_;
 }
-int String::capacity(void) const
+size_t String::capacity(void) const
 {
 	return capacity_;
 }
@@ -123,6 +119,7 @@ char* String::c_str(void) const
 {
 	return str;
 }
+
 
 //Methode
 /*void String::clear(void)
@@ -134,6 +131,20 @@ char* String::c_str(void) const
 
 	str.length() = 0;
 }*/
+
+// Methods
+bool String::empty(void)
+{
+	bool is_empty;
+	if(length_ == 0){
+		is_empty = true;
+	}
+	else{
+		is_empty = false;
+	}
+	return is_empty;
+}
+
 
 // ===========================================================================
 //                                Protected Methods
