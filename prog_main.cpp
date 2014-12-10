@@ -74,12 +74,12 @@ int main(int argc, char* argv[])
 
   //Constructor using copy
   String myString1 = String(myString);
-  printf("La longueur de la string vaut : %d\n",myString1.GetLength());
-  printf("La capacity de la string vaut : %d\n",myString1.GetCapacity());
+  printf("La longueur de la string vaut : %d\n",myString1.length());
+  printf("La capacity de la string vaut : %d\n",myString1.capacity());
   printf("La chaine est : ");
-  for (int i=0; i<myString1.GetLength(); i++)
+  for (int i=0; i<myString1.length(); i++)
   {
-  	printf("%c",myString1.GetStr()[i]);
+  	printf("%c",myString1.c_str()[i]);
   }
   printf("\n");
 
