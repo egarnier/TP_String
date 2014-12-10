@@ -39,14 +39,14 @@
 int main(int argc, char* argv[])
 {
   String myString;
-  printf("La longueur de la string vaut : %d\n",myString.GetLength());
-  printf("La capacity de la string vaut : %d\n",myString.GetCapacity());
+  printf("La longueur de la string vaut : %d\n",myString.length());
+  printf("La capacity de la string vaut : %d\n",myString.capacity());
   printf("La chaine est : ");
-  for (int i=0; i<myString.GetLength(); i++)
+  for (int i=0; i<myString.length(); i++)
   {
-  	printf("%c",myString.GetStr()[i]);
+  	printf("%c",myString.c_str()[i]);
   }
-
+printf("\n");
 
   return 0;
 }
