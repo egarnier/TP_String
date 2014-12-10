@@ -40,10 +40,10 @@ int main(int argc, char* argv[])
 {
   // Constructor void
   String myString;
-  printf("La longueur de la string vaut : %d\n",myString.length());
-  printf("La capacity de la string vaut : %d\n",myString.capacity());
+  printf("La longueur de la string vaut : %ld\n",myString.length());
+  printf("La capacity de la string vaut : %ld\n",myString.capacity());
   printf("La chaine est : ");
-  for (int i=0; i<myString.length(); i++)
+  for (size_t i=0; i<myString.length(); i++)
   {
   	printf("%c",myString.c_str()[i]);
   }
@@ -60,30 +60,53 @@ int main(int argc, char* argv[])
 
   String* name = new String(test);
 
-  printf("La longueur de la string vaut : %d\n",name->length());
-  printf("La capacity de la string vaut : %d\n",name->capacity());
+  printf("La longueur de la string vaut : %ld\n",name->length());
+  printf("La capacity de la string vaut : %ld\n",name->capacity());
   printf("La chaine est : ");
-  for (int j=0; j<name->length(); j++)
+  for (size_t j=0; j<name->length(); j++)
   {
     printf("%c",name->c_str()[j]);
   }
   printf("\n");
 
-  delete(name);
 
-
-  //Constructor using copy
-  String myString1 = String(myString);
-  printf("La longueur de la string vaut : %d\n",myString1.length());
-  printf("La capacity de la string vaut : %d\n",myString1.capacity());
+  //Resize à un parametre
+  name->resize(2);
+  printf("La longueur de la string vaut : %ld\n",name->length());
+  printf("La capacity de la string vaut : %ld\n",name->capacity());
   printf("La chaine est : ");
-  for (int i=0; i<myString1.length(); i++)
+  for (size_t j=0; j<name->length(); j++)
   {
-  	printf("%c",myString1.c_str()[i]);
+    printf("%c",name->c_str()[j]);
+  }
+  printf("\n");
+
+  //Resize à 2 parametres
+  name->resize(3, 'r');
+  name->resize(4, 'i');
+  name->resize(5, 'e');
+  printf("La longueur de la string vaut : %ld\n",name->length());
+  printf("La capacity de la string vaut : %ld\n",name->capacity());
+  printf("La chaine est : ");
+  for (size_t j=0; j<name->length(); j++)
+  {
+    printf("%c",name->c_str()[j]);
   }
   printf("\n");
 
 
+  /*//Constructor using copy
+  String myString1 = String(myString);
+  printf("La longueur de la string vaut : %ld\n",myString1.length());
+  printf("La capacity de la string vaut : %ld\n",myString1.capacity());
+  printf("La chaine est : ");
+  for (size_t i=0; i<myString1.length(); i++)
+  {
+  	printf("%c",myString1.c_str()[i]);
+  }
+  printf("\n");*/
+
+  delete(name);
   return 0;
 }
 

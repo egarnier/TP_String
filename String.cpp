@@ -4,14 +4,10 @@
 //
 //****************************************************************************
 
-
- 
  
 // ===========================================================================
 //                                   Libraries
 // ===========================================================================
-
-
 
 // ===========================================================================
 //                                 Project Files
@@ -30,7 +26,7 @@
 // ===========================================================================
 //                         Definition of static attributes
 // ===========================================================================
-int String::MAX_SIZE = 65535;
+size_t String::MAX_SIZE = 65535;
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
@@ -52,7 +48,7 @@ String::String(const char* phrase)
 {
 	//Length
 	length_ = 0;
-	for (int i=0; i<MAX_SIZE; i++)
+	for (size_t i=0; i<MAX_SIZE; i++)
 	{
 		if (phrase[i] != '\0')
 		{
@@ -69,7 +65,7 @@ String::String(const char* phrase)
 	
 	//String
 	str = new char[capacity_];
-	for (int j=0; j<length_; j++)
+	for (size_t j=0; j<length_; j++)
 	{
 		str[j] = phrase[j];
 	}
@@ -95,21 +91,21 @@ String::~String(void)
 //                                 Public Methods
 // ===========================================================================
 // Getters
-int String::GetMAX_SIZE(void) const
+size_t String::max_size(void) const
 {
 	return MAX_SIZE;
 }
 
-int String::length(void) const
+size_t String::length(void) const
 {
 	return length_;
 }
 
-int String::size(void) const
+size_t String::size(void) const
 {
 	return length_;
 }
-int String::capacity(void) const
+size_t String::capacity(void) const
 {
 	return capacity_;
 }
@@ -117,6 +113,29 @@ int String::capacity(void) const
 char* String::c_str(void) const
 {
 	return str;
+}
+
+//Methods
+void String::resize(const size_t n)
+{
+	if (length_ > n) {
+		for (size_t i = n; i<length_; i++)
+		{
+			str[i] = '\0';
+		}
+		length_ = n;
+	}
+}
+
+void String::resize(size_t n, char c)
+{
+	if (length_ < n) {
+		for (size_t i = length_; i<n; i++)
+		{
+			str[i] = c;
+		}
+		length_ = n;
+	}
 }
 
 // ===========================================================================
