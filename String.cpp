@@ -121,7 +121,7 @@ char* String::c_str(void) const
 }
 
 
-//Methode
+//Method
 /*void String::clear(void)
 {
 	for (int i = 0; i < str.length(); ++i)
@@ -145,6 +145,20 @@ bool String::empty(void)
 	return is_empty;
 }
 
+void String::reserve (size_t n = 0)
+{
+	if(n>MAX_SIZE)
+	{
+		printf("The value is bigger than the maximum size allowed for a string, please change your value.\n");
+	}
+	else if(n>capacity_)
+	{
+		// code à rajouter : ajouter de la capacité
+	}
+	else{
+		// code à rajouter
+	}
+}
 
 // ===========================================================================
 //                                Protected Methods
