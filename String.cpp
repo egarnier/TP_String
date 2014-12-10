@@ -30,31 +30,62 @@
 // ===========================================================================
 //                         Definition of static attributes
 // ===========================================================================
-int String::MAX_SIZE=65535;
+int String::MAX_SIZE = 65535;
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
+
+// Constructor par défaut
 String::String(void)
 {
 	length_ = 4;
 	capacity_ = 10;
-	str = new char[length_];
+	str = new char[capacity_];
 	str[0] = 't';
 	str[1] = 'i';
 	str[2] = 't';
 	str[3] = 'o';
 }
 
+// Constructor a partir d'une c-string
+String::String(const char* phrase)
+{
+	//Length
+	length_ = 0;
+	for (int i=0; i<MAX_SIZE; i++)
+	{
+		if (phrase[i] != '\0')
+		{
+			length_ = length_ + 1;
+		}
+		else 
+		{
+			break;
+		}
+	}
+
+	//Capacity
+	capacity_ = length_ + 30;
+	
+	//String
+	str = new char[capacity_];
+	for (int j=0; j<length_; j++)
+	{
+		str[j] = phrase[j];
+	}
+}
+	
 String::String(const String& sentence)
 {
 	length_ = sentence.length();
+
 	str = new char[length_];
 
 	for (int i = 0; i < length_; ++i)
 	{
 		str[i] = sentence.str[i];
 	}
-	
+
 }
 
 // ===========================================================================
