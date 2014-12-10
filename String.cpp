@@ -70,14 +70,15 @@ String::String(const char* phrase)
 		str[j] = phrase[j];
 	}
 }
-	
+
+//copie constructor
 String::String(const String& sentence)
 {
 	length_ = sentence.length();
 
 	str = new char[length_];
 
-	for (int i = 0; i < length_; ++i)
+	for (size_t i = 0; i < length_; ++i)
 	{
 		str[i] = sentence.str[i];
 	}
@@ -122,15 +123,11 @@ char* String::c_str(void) const
 
 
 //Methode
-/*void String::clear(void)
+void String::clear(void)
 {
-	for (int i = 0; i < str.length(); ++i)
-	{
-		str.c_str()[i] = "";
-	}
-
-	str.length() = 0;
-}*/
+	str[0] = '\0';
+	length_ = 0;
+}
 
 // Methods
 bool String::empty(void)
