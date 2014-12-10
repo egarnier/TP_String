@@ -30,15 +30,15 @@
 // ===========================================================================
 //                         Definition of static attributes
 // ===========================================================================
-//static String::SIZE_MAX = 65535;
+int String::MAX_SIZE=65535;
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
 String::String(void)
 {
-	length = 4;
-	capacity = 10;
-	str = new char[length];
+	length_ = 4;
+	capacity_ = 10;
+	str = new char[length_];
 	str[0] = 't';
 	str[1] = 'i';
 	str[2] = 't';
@@ -64,44 +64,30 @@ String::~String(void)
 //                                 Public Methods
 // ===========================================================================
 // Getters
-/*int String::GetMAX_SIZE(void) const
+int String::GetMAX_SIZE(void) const
 {
 	return MAX_SIZE;
-}*/
-
-int String::GetLength(void) const
-{
-	return length;
 }
 
-int String::GetSize(void) const
+int String::length(void) const
 {
-	return length;
-}
-int String::GetCapacity(void) const
-{
-	return capacity;
+	return length_;
 }
 
-char* String::GetStr(void) const
+int String::size(void) const
+{
+	return length_;
+}
+int String::capacity(void) const
+{
+	return capacity_;
+}
+
+char* String::c_str(void) const
 {
 	return str;
 }
 
-// Methods
-/*int String::cap() const
-{
-	int size_string_byte;
-
-	if((str.GetSize() + 20) < str.GetMAX_SIZE())
-	{
-		size_string_byte = str.GetLength() + 20;	
-	}
-	else{
-		size_string_byte = str.GetMAX_SIZE();
-	}
-	return size_string_byte;
-}*/
 // ===========================================================================
 //                                Protected Methods
 // ===========================================================================
