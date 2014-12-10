@@ -49,7 +49,16 @@ int main(int argc, char* argv[])
 
   printf("\n");
 
-  String myString1 = String(myString);
+  myString.clear();
+  printf("La longueur de la string vaut : %d\n",myString.length());
+  printf("La capacity de la string vaut : %d\n",myString.capacity());
+  printf("La chaine est : ");
+  for (int i=0; i<myString.length(); i++)
+  {
+  	printf("%c",myString.c_str()[i]);
+  }
+
+  /*String myString1 = String(myString);
   printf("La longueur de la string vaut : %d\n",myString1.GetLength());
   printf("La capacity de la string vaut : %d\n",myString1.GetCapacity());
   printf("La chaine est : ");
@@ -57,7 +66,7 @@ int main(int argc, char* argv[])
   {
   	printf("%c",myString1.GetStr()[i]);
   }
-  printf("\n");
+  printf("\n");*/
 
 
   return 0;
