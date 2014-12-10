@@ -74,9 +74,14 @@ String::String(const char* phrase)
 String::String(const String& sentence)
 {
 	length_ = sentence.length();
-	capacity_ = sentence.capacity();
-	str = new char[capacity_];
-	str = sentence.c_str();
+
+	str = new char[length_];
+
+	for (int i = 0; i < length_; ++i)
+	{
+		str[i] = sentence.str[i];
+	}
+
 }
 
 // ===========================================================================
@@ -115,6 +120,18 @@ char* String::c_str(void) const
 	return str;
 }
 
+
+//Methode
+/*void String::clear(void)
+{
+	for (int i = 0; i < str.length(); ++i)
+	{
+		str.c_str()[i] = "";
+	}
+
+	str.length() = 0;
+}*/
+
 // Methods
 bool String::empty(void)
 {
@@ -127,6 +144,7 @@ bool String::empty(void)
 	}
 	return is_empty;
 }
+
 
 // ===========================================================================
 //                                Protected Methods

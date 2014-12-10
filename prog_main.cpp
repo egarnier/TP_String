@@ -69,6 +69,19 @@ int main(int argc, char* argv[])
   }
   printf("\n");
 
+  //try to clear
+  myString.clear();
+  printf("La longueur de la string vaut : %d\n",myString.length());
+  printf("La capacity de la string vaut : %d\n",myString.capacity());
+  printf("La chaine est : ");
+  for (int i=0; i<myString.length(); i++)
+  {
+  	printf("%c",myString.c_str()[i]);
+  }
+
+  /*String myString1 = String(name);
+  printf("La longueur de la string vaut : %d\n",myString1.GetLength());
+  printf("La capacity de la string vaut : %d\n",myString1.GetCapacity());
   delete(name);
 
 
@@ -76,12 +89,14 @@ int main(int argc, char* argv[])
   String myString1 = String(myString);
   printf("La longueur de la string vaut : %d\n",myString1.length());
   printf("La capacity de la string vaut : %d\n",myString1.capacity());
+
   printf("La chaine est : ");
   for (int i=0; i<myString1.length(); i++)
   {
   	printf("%c",myString1.c_str()[i]);
   }
-  printf("\n");*/
+  printf("\n");
+
 
   // Test method empty
   bool is_empty1 = myString.empty();
@@ -90,6 +105,7 @@ int main(int argc, char* argv[])
   else{printf("La chaine 1 n'est pas vide.\n");}
   if(is_empty2 == true){printf("La chaine 2 est vide\n");}
   else{printf("La chaine 2 n'est pas vide.\n");}
+
 
   return 0;
 }
