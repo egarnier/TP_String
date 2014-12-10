@@ -51,12 +51,12 @@ String::String(void)
 String::String(const char* phrase)
 {
 	//Length
-	length = 0;
+	length_ = 0;
 	for (int i=0; i<MAX_SIZE; i++)
 	{
 		if (phrase[i] != '\0')
 		{
-			length = length + 1;
+			length_ = length_ + 1;
 		}
 		else 
 		{
@@ -65,11 +65,11 @@ String::String(const char* phrase)
 	}
 
 	//Capacity
-	capacity = length + 30;
+	capacity_ = length_ + 30;
 	
 	//String
-	str = new char[capacity];
-	for (int j=0; j<length; j++)
+	str = new char[capacity_];
+	for (int j=0; j<length_; j++)
 	{
 		str[j] = phrase[j];
 	}
@@ -77,9 +77,10 @@ String::String(const char* phrase)
 	
 String::String(const String& sentence)
 {
-	length = sentence.length();
-	str = new char[length];
-	str = sentence.GetStr();
+	length_ = sentence.length();
+	capacity_ = sentence.capacity();
+	str = new char[capacity_];
+	str = sentence.c_str();
 }
 
 // ===========================================================================
