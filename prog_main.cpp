@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
   printf("La longueur de la string vaut : %ld\n",myString.length());
   printf("La capacity de la string vaut : %ld\n",myString.capacity());
   printf("La chaine est : ");
-  for (int i=0; i<(int)myString.length(); i++)
+  for (size_t i=0; i<myString.length(); i++)
   {
   	printf("%c",myString.c_str()[i]);
   }
@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
   printf("La longueur de la string vaut : %ld\n",name->length());
   printf("La capacity de la string vaut : %ld\n",name->capacity());
   printf("La chaine est : ");
-  for (int j=0; j<(int)name->length(); j++)
+  for (size_t j=0; j < name->length(); j++)
   {
     printf("%c",name->c_str()[j]);
   }

@@ -48,7 +48,7 @@ String::String(const char* phrase)
 {
 	//Length
 	length_ = 0;
-	for (int i=0; i<(int)MAX_SIZE; i++)
+	for (size_t i=0; i<MAX_SIZE; i++)
 	{
 		if (phrase[i] != '\0')
 		{
@@ -65,7 +65,7 @@ String::String(const char* phrase)
 	
 	//String
 	str = new char[capacity_];
-	for (int j=0; j<(int)length_; j++)
+	for (size_t j=0; j<length_; j++)
 	{
 		str[j] = phrase[j];
 	}
