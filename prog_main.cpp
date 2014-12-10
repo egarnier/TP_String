@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
   printf("\n");
 
 
-  //Constructor using c-str
+  // Constructor using c-str
   char* test = new char[5];
   test[0]='m';
   test[1]='a';
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
   delete(name);
 
 
-  //Constructor using copy
+  /*// Constructor using copy
   String myString1 = String(myString);
   printf("La longueur de la string vaut : %d\n",myString1.length());
   printf("La capacity de la string vaut : %d\n",myString1.capacity());
@@ -81,8 +81,15 @@ int main(int argc, char* argv[])
   {
   	printf("%c",myString1.c_str()[i]);
   }
-  printf("\n");
+  printf("\n");*/
 
+  // Test method empty
+  bool is_empty1 = myString.empty();
+  bool is_empty2 = name->empty();
+  if(is_empty1 == true){printf("La chaine 1 est vide\n");}
+  else{printf("La chaine 1 n'est pas vide.\n");}
+  if(is_empty2 == true){printf("La chaine 2 est vide\n");}
+  else{printf("La chaine 2 n'est pas vide.\n");}
 
   return 0;
 }
