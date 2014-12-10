@@ -45,8 +45,8 @@ class String
     // =======================================================================
     //                               Constructors
     // =======================================================================
-
-    String(const char* phrase);
+    String(const String& sentence);
+    // String(const char* phrase);
     String(void);
 
     // =======================================================================
@@ -93,12 +93,12 @@ class String
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
-    };*/
+    };
     String(const String &model)
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
-    };
+    };*/
 
 
     // =======================================================================
