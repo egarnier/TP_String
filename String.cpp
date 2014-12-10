@@ -30,7 +30,7 @@
 // ===========================================================================
 //                         Definition of static attributes
 // ===========================================================================
-int String::MAX_SIZE = 65535;
+size_t String::MAX_SIZE = 65535;
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
@@ -48,7 +48,7 @@ String::String(const char* phrase)
 {
 	//Length
 	length_ = 0;
-	for (int i=0; i<MAX_SIZE; i++)
+	for (int i=0; i<(int)MAX_SIZE; i++)
 	{
 		if (phrase[i] != '\0')
 		{
@@ -65,7 +65,7 @@ String::String(const char* phrase)
 	
 	//String
 	str = new char[capacity_];
-	for (int j=0; j<length_; j++)
+	for (int j=0; j<(int)length_; j++)
 	{
 		str[j] = phrase[j];
 	}
@@ -91,21 +91,21 @@ String::~String(void)
 //                                 Public Methods
 // ===========================================================================
 // Getters
-int String::GetMAX_SIZE(void) const
+size_t String::GetMAX_SIZE(void) const
 {
 	return MAX_SIZE;
 }
 
-int String::length(void) const
+size_t String::length(void) const
 {
 	return length_;
 }
 
-int String::size(void) const
+size_t String::size(void) const
 {
 	return length_;
 }
-int String::capacity(void) const
+size_t String::capacity(void) const
 {
 	return capacity_;
 }
