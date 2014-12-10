@@ -45,6 +45,7 @@ class String
     // =======================================================================
     //                               Constructors
     // =======================================================================
+    String(const String& sentence);
     String(void);
     String(const char* phrase);
     
@@ -57,11 +58,11 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-    //int GetMAX_SIZE(void) const;
-    int GetLength(void) const;
-    int GetCapacity(void) const;
-    char* GetStr(void) const;
-    int GetSize(void) const;
+    int GetMAX_SIZE(void) const;
+    int length(void) const;
+    int capacity(void) const;
+    char* c_str(void) const;
+    int size(void) const;
 
     // =======================================================================
     //                            Accessors: setters
@@ -74,7 +75,6 @@ class String
     // =======================================================================
     //                              Public Methods
     // =======================================================================
-    //int cap() const;
 
     // =======================================================================
     //                             Public Attributes
@@ -89,11 +89,12 @@ class String
     // =======================================================================
     //                            Forbidden Constructors
     // =======================================================================
-    String(const String &model)
+    /*String(const String &model)
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
-    };
+    };*/
+
     // =======================================================================
     //                              Protected Methods
     // =======================================================================
@@ -103,15 +104,15 @@ class String
     // =======================================================================
     static int MAX_SIZE;
     char* str;
-    int capacity;
-    int length;
+    int capacity_;
+    int length_;
 };
 
 
 // ===========================================================================
 //                              Getters' definitions
 // ===========================================================================
-//char* Get_str(void){return str;}
+
 // ===========================================================================
 //                              Setters' definitions
 // ===========================================================================

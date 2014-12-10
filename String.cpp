@@ -38,9 +38,9 @@ int String::MAX_SIZE = 65535;
 // Constructor par défaut
 String::String(void)
 {
-	length = 4;
-	capacity = 10;
-	str = new char[capacity];
+	length_ = 4;
+	capacity_ = 10;
+	str = new char[capacity_];
 	str[0] = 't';
 	str[1] = 'i';
 	str[2] = 't';
@@ -73,7 +73,13 @@ String::String(const char* phrase)
 	{
 		str[j] = phrase[j];
 	}
+}
 	
+String::String(const String& sentence)
+{
+	length = sentence.length();
+	str = new char[length];
+	str = sentence.GetStr();
 }
 
 // ===========================================================================
@@ -81,38 +87,36 @@ String::String(const char* phrase)
 // ===========================================================================
 String::~String(void)
 {
-	delete(str);
+	delete str;
 }
 
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
 // Getters
-/*int String::GetMAX_SIZE(void) const
+int String::GetMAX_SIZE(void) const
 {
 	return MAX_SIZE;
-}*/
-
-int String::GetLength(void) const
-{
-	return length;
 }
 
-int String::GetSize(void) const
+int String::length(void) const
 {
-	return length;
-}
-int String::GetCapacity(void) const
-{
-	return capacity;
+	return length_;
 }
 
-char* String::GetStr(void) const
+int String::size(void) const
+{
+	return length_;
+}
+int String::capacity(void) const
+{
+	return capacity_;
+}
+
+char* String::c_str(void) const
 {
 	return str;
 }
-
-// Methods
 
 // ===========================================================================
 //                                Protected Methods
