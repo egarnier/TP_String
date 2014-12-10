@@ -38,13 +38,9 @@ int String::MAX_SIZE = 65535;
 // Constructor par défaut
 String::String(void)
 {
-	length_ = 4;
-	capacity_ = 10;
-	str = new char[capacity_];
-	str[0] = 't';
-	str[1] = 'i';
-	str[2] = 't';
-	str[3] = 'o';
+	length_ = 0;
+	capacity_ = 0;
+	str = NULL;
 }
 
 // Constructor a partir d'une c-string
@@ -117,6 +113,19 @@ int String::capacity(void) const
 char* String::c_str(void) const
 {
 	return str;
+}
+
+// Methods
+bool String::empty(void)
+{
+	bool is_empty;
+	if(length_ == 0){
+		is_empty = true;
+	}
+	else{
+		is_empty = false;
+	}
+	return is_empty;
 }
 
 // ===========================================================================
