@@ -40,10 +40,10 @@ int main(int argc, char* argv[])
 {
   // Constructor void
   String myString;
-  printf("La longueur de la string vaut : %d\n",myString.length());
-  printf("La capacity de la string vaut : %d\n",myString.capacity());
+  printf("La longueur de la string vaut : %ld\n",myString.length());
+  printf("La capacity de la string vaut : %ld\n",myString.capacity());
   printf("La chaine est : ");
-  for (int i=0; i<myString.length(); i++)
+  for (int i=0; i<(int)myString.length(); i++)
   {
   	printf("%c",myString.c_str()[i]);
   }
@@ -60,10 +60,10 @@ int main(int argc, char* argv[])
 
   String* name = new String(test);
 
-  printf("La longueur de la string vaut : %d\n",name->length());
-  printf("La capacity de la string vaut : %d\n",name->capacity());
+  printf("La longueur de la string vaut : %ld\n",name->length());
+  printf("La capacity de la string vaut : %ld\n",name->capacity());
   printf("La chaine est : ");
-  for (int j=0; j<name->length(); j++)
+  for (int j=0; j<(int)name->length(); j++)
   {
     printf("%c",name->c_str()[j]);
   }
