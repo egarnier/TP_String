@@ -45,12 +45,19 @@ String::String(void)
 	str[3] = 'o';
 }
 
+String::String(const String& sentence)
+{
+	length = sentence.length();
+	str = new char[length];
+	str = sentence.GetStr();
+}
+
 // ===========================================================================
 //                                  Destructor
 // ===========================================================================
 String::~String(void)
 {
-	delete(str);
+	delete str;
 }
 
 // ===========================================================================
