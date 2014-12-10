@@ -45,11 +45,8 @@ class String
     // =======================================================================
     //                               Constructors
     // =======================================================================
-<<<<<<< HEAD
+
     String(const char* phrase);
-=======
-    /*String(const char* phrase);*/
->>>>>>> b0ad68feb7553861858c8b66fd1e49179b852858
     String(void);
 
     // =======================================================================
@@ -60,25 +57,12 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    /*char* Get_str(void) const;
-    int GetMAX_SIZE(void) const;*/
+    //int GetMAX_SIZE(void) const;
     int GetLength(void) const;
     int GetCapacity(void) const;
-    char GetStr(int index) const;
-=======
-<<<<<<< HEAD
->>>>>>> b0ad68feb7553861858c8b66fd1e49179b852858
+    char* GetStr(void) const;
     int GetSize(void) const;
-    char* Get_str(void) const;
-<<<<<<< HEAD
 
-=======
->>>>>>> 431d956c45002e89eada6b59e8f111448eeffafc
->>>>>>> 2647e12164c8d741c979485b86a7da5d9b870ad9
->>>>>>> b0ad68feb7553861858c8b66fd1e49179b852858
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -90,7 +74,7 @@ class String
     // =======================================================================
     //                              Public Methods
     // =======================================================================
-    size_t capacity() const;
+    int cap() const;
 
     // =======================================================================
     //                             Public Attributes
@@ -109,12 +93,12 @@ class String
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
-    };
+    };*/
     String(const String &model)
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
-    };*/
+    };
 
 
     // =======================================================================
@@ -125,14 +109,9 @@ class String
     //                             Protected Attributes
     // =======================================================================
     char* str;
-<<<<<<< HEAD
-    int size;
     int capacity;
-    static int MAX_SIZE;
-=======
+    //static int MAX_SIZE;
     int length;
-    int capacity;
->>>>>>> 431d956c45002e89eada6b59e8f111448eeffafc
 };
 
 
