@@ -30,19 +30,50 @@
 // ===========================================================================
 //                         Definition of static attributes
 // ===========================================================================
-//static String::SIZE_MAX = 65535;
+int String::MAX_SIZE = 65535;
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
+
+// Constructor par défaut
 String::String(void)
 {
 	length = 4;
 	capacity = 10;
-	str = new char[length];
+	str = new char[capacity];
 	str[0] = 't';
 	str[1] = 'i';
 	str[2] = 't';
 	str[3] = 'o';
+}
+
+// Constructor a partir d'une c-string
+String::String(const char* phrase)
+{
+	//Length
+	length = 0;
+	for (int i=0; i<MAX_SIZE; i++)
+	{
+		if (phrase[i] != '\0')
+		{
+			length = length + 1;
+		}
+		else 
+		{
+			break;
+		}
+	}
+
+	//Capacity
+	capacity = length + 30;
+	
+	//String
+	str = new char[capacity];
+	for (int j=0; j<length; j++)
+	{
+		str[j] = phrase[j];
+	}
+	
 }
 
 // ===========================================================================
@@ -82,19 +113,7 @@ char* String::GetStr(void) const
 }
 
 // Methods
-/*int String::cap() const
-{
-	int size_string_byte;
 
-	if((str.GetSize() + 20) < str.GetMAX_SIZE())
-	{
-		size_string_byte = str.GetLength() + 20;	
-	}
-	else{
-		size_string_byte = str.GetMAX_SIZE();
-	}
-	return size_string_byte;
-}*/
 // ===========================================================================
 //                                Protected Methods
 // ===========================================================================
