@@ -113,11 +113,18 @@ int main(int argc, char* argv[])
   // Test method empty
   bool is_empty1 = myString.empty();
   bool is_empty2 = name->empty();
-  if(is_empty1 == true){printf("La chaine 1 est vide\n");}
+  if(is_empty1 == true){printf("La chaine 1 est vide.\n");}
   else{printf("La chaine 1 n'est pas vide.\n");}
-  if(is_empty2 == true){printf("La chaine 2 est vide\n");}
+  if(is_empty2 == true){printf("La chaine 2 est vide.\n");}
   else{printf("La chaine 2 n'est pas vide.\n");}
+  printf("\n\n");
+  
 
+  // Test method reserve
+  name->reserve(20);
+  name->reserve(50);
+  name->reserve(10000000);
+  printf("\n\n");
 
   delete name;
   delete test;
