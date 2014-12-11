@@ -71,7 +71,10 @@ class String
     void clear(void);
     String& operator= (char c);
     String& operator= (const String& str_);
-    String& operator=(const char* s);
+    String& operator= (const char* s);
+    //String operator+ (const String& lhs, const String& rhs);
+    const char& operator[] (size_t pos) const;
+    char& operator[] (size_t pos);
     
     
     // =======================================================================
