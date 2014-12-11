@@ -145,8 +145,16 @@ void String::resize(size_t n, char c)
 //Method
 void String::clear(void)
 {
-	str[0] = '\0';
-	length_ = 0;
+	if (length_ != 0)
+	{
+		str[0] = '\0';
+		length_ = 0;
+		printf("Chain has been deleted : it's now empty\n");
+	} else 
+	{
+		printf("Chain is already empty\n");
+	}
+	
 }
 
 // Methods
