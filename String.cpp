@@ -197,7 +197,8 @@ void String::reserve (size_t n)
 
 
 // Operators
-String& String::operator=(const char* s)
+// Operators = using char*
+String& String::operator= (const char* s)
 {
 	size_t s_length = 0;
 	for(int k=0; k<66000; k++)
@@ -232,6 +233,56 @@ String& String::operator=(const char* s)
 	return *this;
 }
 
+// Operator + using string
+/*String String::operator+ (const String& lhs, const String& rhs)
+{
+	if((lhs.length() + rhs.length())>MAX_SIZE)
+	{
+		printf("Your String is bigger than the maximum size allowed, pleased change your String.\n");
+	}
+	else
+	{
+		String new_str;
+		new_str.reserve((lhs.length() + rhs.length());
+		new_str.length()=new_str.capacity();
+		for(size_t i=0;i<lhs.length();i++)
+		{
+			new_str.c_str()[i]=lhs.c_str()[i];
+		}
+		for(size_t j=0;j<rhs.length();j++)
+		{
+			new_str.c_str()[j+lhs.length()]=rhs.c_str()[j];
+		}
+	}
+	return new_str;
+}*/
+
+// Operator []
+const char& String::operator[] (size_t pos) const
+{
+	if(pos<length_)
+	{
+		return str[pos];
+	}
+	else
+	{
+		char a = '\0';
+		return a;
+	}
+}
+
+char& String::operator[] (size_t pos)
+{
+	if(pos<length_)
+	{
+		return str[pos];
+	}
+	else
+	{
+		char a = '\0';
+		return a;
+	}
+}
 // ===========================================================================
 //                                Protected Methods
 // ===========================================================================
