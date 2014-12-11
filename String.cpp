@@ -176,19 +176,60 @@ void String::reserve (size_t n)
 	}
 	else if(n>capacity_ && n<=MAX_SIZE)
 	{
-		String tmp = String(str);
+		//printf("Hey je suis dans reserve :p ! \n");
+		char* tmp = new char[length_];
+		for(size_t i=0;i<length_;i++)
+		{
+			tmp[i]=str[i];
+		}
 		length_ = capacity_ = n;
 		str = new char[capacity_];
 		for (size_t i=0; i<length_; i++)
 		{
-			str[i] = tmp.c_str()[i];
+			str[i] = tmp[i];
 		}
-		printf("The capacity of the String has been modified, the new capacity is now %ld.\n",capacity_);
-		
+		delete tmp;
 	}
 	else{
-		printf("The capacity of the String is big enough.\n");
+		length_ = n;
 	}
+	}
+
+
+// Operators
+String& String::operator=(const char* s)
+{
+	size_t s_length = 0;
+	for(int k=0; k<66000; k++)
+	{
+		if (s[k] != '\0')
+		{
+			s_length = s_length + 1;
+		}
+		else 
+		{
+			break;
+		}
+	}
+		if(s_length>MAX_SIZE){
+		printf("The chain is bigger than the maximum size allowed, please change your chain.\n");
+	}
+	else if(s_length>capacity_ && s_length<=MAX_SIZE)
+	{
+		this[0].reserve(s_length);
+		for(size_t i = 0 ; i<capacity_ ; i++)
+		{
+			str[i]=s[i];
+		}
+	}
+	else{
+		length_ = s_length;
+			for(size_t j = 0 ; j<capacity_ ; j++)
+		{
+			str[j]=s[j];
+		}
+	}
+	return *this;
 }
 
 // ===========================================================================
