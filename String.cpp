@@ -141,8 +141,6 @@ void String::resize(size_t n, char c)
 }
 
 
-
-//Method
 void String::clear(void)
 {
 	if (length_ != 0)
@@ -157,7 +155,7 @@ void String::clear(void)
 	
 }
 
-// Methods
+
 bool String::empty(void)
 {
 	bool is_empty;
@@ -170,18 +168,26 @@ bool String::empty(void)
 	return is_empty;
 }
 
-void String::reserve (size_t n = 0)
+void String::reserve (size_t n)
 {
 	if(n>MAX_SIZE)
 	{
 		printf("The value is bigger than the maximum size allowed for a string, please change your value.\n");
 	}
-	else if(n>capacity_)
+	else if(n>capacity_ && n<=MAX_SIZE)
 	{
-		// code à rajouter : ajouter de la capacité
+		String tmp = String(str);
+		length_ = capacity_ = n;
+		str = new char[capacity_];
+		for (size_t i=0; i<length_; i++)
+		{
+			str[i] = tmp.c_str()[i];
+		}
+		printf("The capacity of the String has been modified, the new capacity is now %ld.\n",capacity_);
+		
 	}
 	else{
-		// code à rajouter
+		printf("The capacity of the String is big enough.\n");
 	}
 }
 
