@@ -66,11 +66,13 @@ class String
     // =======================================================================
     void resize(const size_t n);
     void resize(size_t n, char c);
-    String& operator= (char c);
-    void clear(void);
-    String& operator= (const String& str_);
     bool empty(void);
     void reserve (size_t n);
+    void clear(void);
+    String& operator= (char c);
+    String& operator= (const String& str_);
+    String& operator=(const char* s);
+    
     
     // =======================================================================
     //                             Public Attributes
