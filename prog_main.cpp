@@ -128,7 +128,7 @@ int main(int argc, char* argv[])
   name->reserve(10000000);
   printf("\n\n");
 
-// Test operator =(char*)
+// Test operator =(char*) and test operator []
   char* tab = new char[11];
   tab[0]='H';
   tab[1]='e';
@@ -143,9 +143,9 @@ int main(int argc, char* argv[])
   tab[10]='d';
   myString = tab;
   printf("myString is now : ");
-  for (size_t j=0; j<myString.length(); j++)
+  for (size_t j=0; j<(myString.length() + 1 ); j++)
   {
-    printf("%c",myString.c_str()[j]);
+    printf("%c",myString[j]);
   }
   printf("\n\n");
   
