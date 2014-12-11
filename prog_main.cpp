@@ -122,12 +122,36 @@ int main(int argc, char* argv[])
 
   // Test method reserve
   name->reserve(20);
+   printf("The new value of the capacity of name is %ld.\n",name->capacity());
   name->reserve(50);
+  printf("The new value of the capacity of name is %ld.\n",name->capacity());
   name->reserve(10000000);
   printf("\n\n");
 
+// Test operator =(char*)
+  char* tab = new char[11];
+  tab[0]='H';
+  tab[1]='e';
+  tab[2]='l';
+  tab[3]='l';
+  tab[4]='o';
+  tab[5]=' ';
+  tab[6]='W';
+  tab[7]='o';
+  tab[8]='r';
+  tab[9]='l';
+  tab[10]='d';
+  myString = tab;
+  printf("myString is now : ");
+  for (size_t j=0; j<myString.length(); j++)
+  {
+    printf("%c",myString.c_str()[j]);
+  }
+  printf("\n\n");
+  
   delete name;
   delete test;
+  delete tab;
 
   return 0;
 }
