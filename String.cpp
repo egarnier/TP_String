@@ -200,7 +200,7 @@ bool String::empty(void)
 }
 
 
-//problem in this function, this function is for change the capacity 
+//problem in this function, this function is for change the capacity only
 void String::reserve (size_t n)
 {
 	if(n>MAX_SIZE)
@@ -317,7 +317,7 @@ String String::operator+ (const char* rhs)
         {
             rhslength = rhslength + 1;
         }
-        else 
+        else
         {
             break;
         }
@@ -365,7 +365,22 @@ String String::operator+ (const String& myString)
 }
 
 // Operator+ using char
+String String::operator+ (const char lhs)
+{
+	String new_str;
+	new_str.reserve(1+length_);
 
+	for (size_t i = 0; i < length_; ++i)
+	{
+		new_str.c_str()[i] = str[i];
+	}
+
+	new_str[length_+1] = lhs;
+	length_= length_+1;
+
+	return new_str;
+	
+}
 
 // Operator []
 const char& String::operator[] (size_t pos) const

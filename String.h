@@ -77,7 +77,7 @@ class String
 
     String operator+ (const char* rhs);//Sam
     String operator+ (const String& myString);//Elo
-    string operator+ (const char lhs);//Arthur
+    String operator+ (const char lhs);//Arthur
 
 
     const char& operator[] (size_t pos) const;//Elo
