@@ -38,9 +38,13 @@ size_t String::MAX_SIZE = 65535;
 // Constructor par défaut
 String::String(void)
 {
-	length_ = 0;
-	capacity_ = 0;
-	str = NULL;
+	length_ = 4;
+	capacity_ = 7;
+	str = new char[4];
+	str[0] = 't';
+	str[1] = 'o';
+	str[2] = 't';
+	str[3] = 'o';
 }
 
 // Constructor a partir d'une c-string
@@ -122,14 +126,14 @@ char* String::c_str(void) const
 }
 
 
-//Methode
+// Methods
 void String::clear(void)
 {
 	str[0] = '\0';
 	length_ = 0;
 }
 
-// Methods
+
 bool String::empty(void)
 {
 	bool is_empty;
