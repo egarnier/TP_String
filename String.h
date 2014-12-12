@@ -72,7 +72,7 @@ class String
     String& operator= (char c);
     String& operator= (const String& str_);
     String& operator= (const char* s);
-    //String operator+ (const String& lhs, const String& rhs);
+    String operator+ (const String& myString);
     const char& operator[] (size_t pos) const;
     char& operator[] (size_t pos);
     
@@ -115,7 +115,7 @@ class String
 // ===========================================================================
 
 // ===========================================================================
-//                             Operators' definitions
+//                             Operators' declarations
 // ===========================================================================
 
 // ===========================================================================
