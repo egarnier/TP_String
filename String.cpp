@@ -140,7 +140,62 @@ void String::resize(size_t n, char c)
 	}
 }
 
+char& String::at (size_t pos)
+{
+	return str[pos-1];
+}
 
+String& String::operator=(char c)
+{
+    if (str == NULL)
+    {
+    	length_ = 1;
+    	str = new char[length_];
+    	*str = c;
+    	*(str + 1) = '\0';
+    	return *this;
+	} else
+	{
+		length_ = 1;
+	    *str = c;
+    	*(str + 1) = '\0';
+    	return *this;
+	}
+}
+
+String String::operator+ (const char* rhs)
+{
+    //Length de rhs
+    size_t rhslength = 0;
+    for (size_t i=0; i<MAX_SIZE; i++)
+    {
+        if (rhs[i] != '\0')
+        {
+            rhslength = rhslength + 1;
+        }
+        else 
+        {
+            break;
+        }
+    }
+
+    size_t l = length_ + rhslength;
+    char* tab = new char[l];
+
+    for (size_t i = 0; i<length_; i++)
+    {
+        tab[i] = str[i];
+    }   
+    for (size_t j = length_; j<l; j++)
+    {
+        tab[j] = rhs[j-length_];
+    }
+
+    String final = String(tab);
+    delete tab;
+
+    return final;
+}
 
 //Method
 void String::clear(void)

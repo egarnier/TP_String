@@ -87,12 +87,38 @@ int main(int argc, char* argv[])
   }
   printf("\n\n");
 
-  //try to clear
+  //at
+  printf("La troisieme lettre de la chaine est %c\n\n",name->at(3));
+
+  //operator=
+  myString = 'c';
+  printf("La longueur de la string myString vaut : %ld\n",myString.length());
+  printf("La capacity de la string myString vaut : %ld\n",myString.capacity());
+  printf("La chaine myString est : ");
+  for (size_t j=0; j<myString.length(); j++)
+  {
+    printf("%c",myString.c_str()[j]);
+  }
+  printf("\n\n");
+
+  //operator+
+  myString = name[0] + test;
+  printf("La longueur de la string + vaut : %ld\n",myString.length());
+  printf("La capacity de la string + vaut : %ld\n",myString.capacity());
+  printf("La chaine + est : ");
+  for (size_t j=0; j<myString.length(); j++)
+  {
+    printf("%c",myString.c_str()[j]);
+  }
+  printf("\n\n");
+
+  //Clear an empty chain
   myString.clear();
   printf("La longueur de la string vaut donc : %ld\n",myString.length());
   printf("La capacity de la string vaut donc : %ld\n",myString.capacity());
   printf("\n\n");
 
+  //Clear a full chain
   name->clear();
   printf("La longueur de la string vaut donc : %ld\n",name->length());
   printf("La capacity de la string vaut donc : %ld\n",name->capacity());

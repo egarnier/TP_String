@@ -65,10 +65,11 @@ class String
     // =======================================================================
     void resize(const size_t n);
     void resize(size_t n, char c);
-    String& operator= (char c);
+    char& at (size_t pos);
+    String& operator=(char c);
+    String operator+ (const char* rhs);
 
     void clear(void);
-    String& operator= (const String& str_);
     bool empty(void);
     void reserve (size_t n);
     // =======================================================================
@@ -98,7 +99,6 @@ class String
     size_t capacity_;
     size_t length_;
 };
-
 
 // ===========================================================================
 //                              Getters' definitions
