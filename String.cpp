@@ -237,22 +237,20 @@ String& String::operator= (const char* s)
 String String::operator+ (const String& myString)
 {
 	String new_str;
-	if((myString.length() + this->length())>MAX_SIZE)
+	if((myString.length() + length_)>MAX_SIZE)
 	{
 		printf("Your String is bigger than the maximum size allowed, pleased change your String.\n");
 	}
 	else
 	{
-		new_str.reserve((myString.length() + this->length()));
-		//size_t a = new_str.capacity();
-		//new_str.length() = a;
-		for(size_t i=0;i<this->length();i++)
+		new_str.reserve(myString.length() + length_);
+		for(size_t i=0;i<length_;i++)
 		{
 			new_str.c_str()[i]=this->c_str()[i];
 		}
 		for(size_t j=0;j<myString.length();j++)
 		{
-			new_str.c_str()[j+this->length()]=myString.c_str()[j];
+			new_str.c_str()[j+length_]=myString.c_str()[j];
 		}
 	}
 	return new_str;
