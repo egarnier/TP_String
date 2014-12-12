@@ -146,7 +146,30 @@ void String::resize(size_t n, char c)
 
 char& String::at (size_t pos)
 {
-	return str[pos-1];
+	//Length de l
+    size_t l = 0;
+    for (size_t i=0; i<MAX_SIZE; i++)
+    {
+        if (str[i] != '\0')
+        {
+            l += 1;
+        }
+        else 
+        {
+            break;
+        }
+    }
+	if (pos > 0 && pos <= l)
+	{
+		return str[pos-1];
+	} else
+	{
+		printf("Not accepted : The %ldth letter doesn't exist\n", pos);
+		char* a = new char[1];
+		*a = '\0';
+		return *a;
+	}
+	
 }
 
 void String::clear(void)
@@ -161,7 +184,6 @@ void String::clear(void)
 	{
 		printf("Chain is already empty\n");
 	}
-	
 }
 
 
