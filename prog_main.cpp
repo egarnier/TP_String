@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
 
   //at
   printf("La troisieme lettre de la chaine est %c\n\n",name->at(3));
-
+  printf("%c\n\n",name->at(8));
   //operator=
   myString = 'c';
   printf("La longueur de la string myString vaut : %ld\n",myString.length());
