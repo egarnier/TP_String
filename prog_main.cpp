@@ -174,25 +174,8 @@ int main(int argc, char* argv[])
     printf("%c",myString[j]);
   }
   printf("\n\n");
- 
 
-  // Test operator + using a string
-  String addition;
-  String myString2 = String(tab);
-  addition = (myString +  myString2).c_str();
-  printf("Addition is a String : ");
-  for (size_t k=0; k<addition.length(); k++)
-  {
-    printf("%c",addition[k]);
-  }
-  printf("\n\n");
-
-
-  delete name;
-  delete test;
-  delete tab;
-
-  return 0;
+return 0;
 }
 
 

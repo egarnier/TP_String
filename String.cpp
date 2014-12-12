@@ -34,9 +34,13 @@ size_t String::MAX_SIZE = 65535;
 // Constructor par défaut
 String::String(void)
 {
-	length_ = 0;
-	capacity_ = 0;
-	str = NULL;
+	length_ = 4;
+	capacity_ = 7;
+	str = new char[4];
+	str[0] = 't';
+	str[1] = 'o';
+	str[2] = 't';
+	str[3] = 'o';
 }
 
 // Constructor a partir d'une c-string
@@ -168,6 +172,9 @@ char& String::at (size_t pos)
 	
 }
 
+
+// Methods
+
 void String::clear(void)
 {
 	if (length_ != 0)
@@ -180,6 +187,7 @@ void String::clear(void)
 		printf("Chain is already empty\n");
 	}
 }
+
 
 bool String::empty(void)
 {
@@ -218,10 +226,12 @@ void String::reserve (size_t n)
 	else{
 		length_ = n;
 	}
-	}
+}
 
-
+//=================================
 // Operators
+//=================================
+
 
 //Operator= using char
 String& String::operator=(char c)
@@ -345,9 +355,8 @@ const char& String::operator[] (size_t pos) const
 	}
 	else
 	{
-		char* a = new char[1];
-		*a = '\0';
-		return *a;
+		char* a = '\0';
+		return a[0];
 	}
 }
 
@@ -359,9 +368,8 @@ char& String::operator[] (size_t pos)
 	}
 	else
 	{
-		char* a = new char[1];
-		*a = '\0';
-		return *a;
+		char* a= '\0';
+		return a[0];
 	}
 }
 // ===========================================================================
