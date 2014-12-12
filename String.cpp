@@ -234,28 +234,29 @@ String& String::operator= (const char* s)
 }
 
 // Operator + using string
-/*String String::operator+ (const String& lhs, const String& rhs)
+String String::operator+ (const String& myString)
 {
-	if((lhs.length() + rhs.length())>MAX_SIZE)
+	String new_str;
+	if((myString.length() + this->length())>MAX_SIZE)
 	{
 		printf("Your String is bigger than the maximum size allowed, pleased change your String.\n");
 	}
 	else
 	{
-		String new_str;
-		new_str.reserve((lhs.length() + rhs.length());
-		new_str.length()=new_str.capacity();
-		for(size_t i=0;i<lhs.length();i++)
+		new_str.reserve((myString.length() + this->length()));
+		//size_t a = new_str.capacity();
+		//new_str.length() = a;
+		for(size_t i=0;i<this->length();i++)
 		{
-			new_str.c_str()[i]=lhs.c_str()[i];
+			new_str.c_str()[i]=this->c_str()[i];
 		}
-		for(size_t j=0;j<rhs.length();j++)
+		for(size_t j=0;j<myString.length();j++)
 		{
-			new_str.c_str()[j+lhs.length()]=rhs.c_str()[j];
+			new_str.c_str()[j+this->length()]=myString.c_str()[j];
 		}
 	}
 	return new_str;
-}*/
+}
 
 // Operator []
 const char& String::operator[] (size_t pos) const
