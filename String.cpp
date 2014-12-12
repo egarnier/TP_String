@@ -149,9 +149,6 @@ char& String::at (size_t pos)
 	return str[pos-1];
 }
 
-
-// Methods
-
 void String::clear(void)
 {
 	if (length_ != 0)
@@ -159,7 +156,8 @@ void String::clear(void)
 		str[0] = '\0';
 		length_ = 0;
 		printf("Chain has been deleted : it's now empty\n");
-	} else 
+	} 
+	else 
 	{
 		printf("Chain is already empty\n");
 	}
@@ -179,13 +177,15 @@ bool String::empty(void)
 	return is_empty;
 }
 
+
+//problem in this function, this function is for change the capacity 
 void String::reserve (size_t n)
 {
 	if(n>MAX_SIZE)
 	{
 		printf("The value is bigger than the maximum size allowed for a string, please change your value.\n");
 	}
-	else if(n>capacity_ && n<=MAX_SIZE)
+	else if(n > capacity_)
 	{
 		//printf("Hey je suis dans reserve :p ! \n");
 		char* tmp = new char[length_];
@@ -201,7 +201,8 @@ void String::reserve (size_t n)
 		}
 		delete tmp;
 	}
-	else{
+	else
+	{
 		length_ = n;
 	}
 }
@@ -221,7 +222,8 @@ String& String::operator=(char c)
     	*str = c;
     	*(str + 1) = '\0';
     	return *this;
-	} else
+	} 
+	else
 	{
 		length_ = 1;
 	    *str = c;
@@ -245,7 +247,8 @@ String& String::operator= (const char* s)
 			break;
 		}
 	}
-		if(s_length>MAX_SIZE){
+	if(s_length>MAX_SIZE)
+	{
 		printf("The chain is bigger than the maximum size allowed, please change your chain.\n");
 	}
 	else if(s_length>capacity_ && s_length<=MAX_SIZE)
@@ -263,6 +266,21 @@ String& String::operator= (const char* s)
 			str[j]=s[j];
 		}
 	}
+	return *this;
+}
+
+// Operator= using String
+String& String::operator= (const String& str_)
+{
+	capacity_ = str_.length();
+
+	str = new char[capacity_];
+
+	for (size_t i = 0; i < capacity_; ++i)
+	{
+		str[i] = str_[i];
+	}
+
 	return *this;
 }
 
@@ -323,6 +341,9 @@ String String::operator+ (const String& myString)
 	}
 	return new_str;
 }
+
+// Operator+ using char
+
 
 // Operator []
 const char& String::operator[] (size_t pos) const
