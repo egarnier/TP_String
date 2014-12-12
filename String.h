@@ -38,6 +38,7 @@ class String
     String(void);
     String(const String& sentence);
     String(const char* phrase);
+    
     // =======================================================================
     //                                Destructor
     // =======================================================================
@@ -66,12 +67,20 @@ class String
     void resize(const size_t n);
     void resize(size_t n, char c);
     char& at (size_t pos);
-    String& operator=(char c);
-    String operator+ (const char* rhs);
-
-    void clear(void);
     bool empty(void);
     void reserve (size_t n);
+    void clear(void);
+
+    String& operator= (char c); //Sam
+    String& operator= (const char* s);//Elo
+    String& operator= (const String& str_); //Arthur
+
+    String operator+ (const char* rhs);//Sam
+    String operator+ (const String& myString);//Elo
+    const char& operator[] (size_t pos) const;//Elo
+    char& operator[] (size_t pos);//Elo
+    
+    
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
@@ -109,7 +118,7 @@ class String
 // ===========================================================================
 
 // ===========================================================================
-//                             Operators' definitions
+//                             Operators' declarations
 // ===========================================================================
 
 // ===========================================================================

@@ -145,6 +145,63 @@ char& String::at (size_t pos)
 	return str[pos-1];
 }
 
+void String::clear(void)
+{
+	if (length_ != 0)
+	{
+		str[0] = '\0';
+		length_ = 0;
+		printf("Chain has been deleted : it's now empty\n");
+	} else 
+	{
+		printf("Chain is already empty\n");
+	}
+	
+}
+
+bool String::empty(void)
+{
+	bool is_empty;
+	if(length_ == 0){
+		is_empty = true;
+	}
+	else{
+		is_empty = false;
+	}
+	return is_empty;
+}
+
+void String::reserve (size_t n)
+{
+	if(n>MAX_SIZE)
+	{
+		printf("The value is bigger than the maximum size allowed for a string, please change your value.\n");
+	}
+	else if(n>capacity_ && n<=MAX_SIZE)
+	{
+		//printf("Hey je suis dans reserve :p ! \n");
+		char* tmp = new char[length_];
+		for(size_t i=0;i<length_;i++)
+		{
+			tmp[i]=str[i];
+		}
+		length_ = capacity_ = n;
+		str = new char[capacity_];
+		for (size_t i=0; i<length_; i++)
+		{
+			str[i] = tmp[i];
+		}
+		delete tmp;
+	}
+	else{
+		length_ = n;
+	}
+	}
+
+
+// Operators
+
+//Operator= using char
 String& String::operator=(char c)
 {
     if (str == NULL)
@@ -163,6 +220,43 @@ String& String::operator=(char c)
 	}
 }
 
+// Operator= using char*
+String& String::operator= (const char* s)
+{
+	size_t s_length = 0;
+	for(int k=0; k<66000; k++)
+	{
+		if (s[k] != '\0')
+		{
+			s_length = s_length + 1;
+		}
+		else 
+		{
+			break;
+		}
+	}
+		if(s_length>MAX_SIZE){
+		printf("The chain is bigger than the maximum size allowed, please change your chain.\n");
+	}
+	else if(s_length>capacity_ && s_length<=MAX_SIZE)
+	{
+		this[0].reserve(s_length);
+		for(size_t i = 0 ; i<capacity_ ; i++)
+		{
+			str[i]=s[i];
+		}
+	}
+	else{
+		length_ = s_length;
+			for(size_t j = 0 ; j<capacity_ ; j++)
+		{
+			str[j]=s[j];
+		}
+	}
+	return *this;
+}
+
+//Operator+ using char*
 String String::operator+ (const char* rhs)
 {
     //Length de rhs
@@ -197,49 +291,55 @@ String String::operator+ (const char* rhs)
     return final;
 }
 
-//Method
-void String::clear(void)
+// Operator+ using String
+String String::operator+ (const String& myString)
 {
-	if (length_ != 0)
+	String new_str;
+	if((myString.length() + length_)>MAX_SIZE)
 	{
-		str[0] = '\0';
-		length_ = 0;
-		printf("Chain has been deleted : it's now empty\n");
-	} else 
-	{
-		printf("Chain is already empty\n");
+		printf("Your String is bigger than the maximum size allowed, pleased change your String.\n");
 	}
-	
+	else
+	{
+		new_str.reserve(myString.length() + length_);
+		for(size_t i=0;i<length_;i++)
+		{
+			new_str.c_str()[i]=this->c_str()[i];
+		}
+		for(size_t j=0;j<myString.length();j++)
+		{
+			new_str.c_str()[j+length_]=myString.c_str()[j];
+		}
+	}
+	return new_str;
 }
 
-// Methods
-bool String::empty(void)
+// Operator []
+const char& String::operator[] (size_t pos) const
 {
-	bool is_empty;
-	if(length_ == 0){
-		is_empty = true;
-	}
-	else{
-		is_empty = false;
-	}
-	return is_empty;
-}
-
-void String::reserve (size_t n = 0)
-{
-	if(n>MAX_SIZE)
+	if(pos<length_)
 	{
-		printf("The value is bigger than the maximum size allowed for a string, please change your value.\n");
+		return str[pos];
 	}
-	else if(n>capacity_)
+	else
 	{
-		// code à rajouter : ajouter de la capacité
-	}
-	else{
-		// code à rajouter
+		char a = '\0';
+		return a;
 	}
 }
 
+char& String::operator[] (size_t pos)
+{
+	if(pos<length_)
+	{
+		return str[pos];
+	}
+	else
+	{
+		char a = '\0';
+		return a;
+	}
+}
 // ===========================================================================
 //                                Protected Methods
 // ===========================================================================

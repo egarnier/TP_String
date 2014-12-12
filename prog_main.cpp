@@ -139,14 +139,58 @@ int main(int argc, char* argv[])
   // Test method empty
   bool is_empty1 = myString.empty();
   bool is_empty2 = name->empty();
-  if(is_empty1 == true){printf("La chaine 1 est vide\n");}
+  if(is_empty1 == true){printf("La chaine 1 est vide.\n");}
   else{printf("La chaine 1 n'est pas vide.\n");}
-  if(is_empty2 == true){printf("La chaine 2 est vide\n");}
+  if(is_empty2 == true){printf("La chaine 2 est vide.\n");}
   else{printf("La chaine 2 n'est pas vide.\n");}
+  printf("\n\n");
+  
+
+  // Test method reserve
+  name->reserve(20);
+   printf("The new value of the capacity of name is %ld.\n",name->capacity());
+  name->reserve(50);
+  printf("The new value of the capacity of name is %ld.\n",name->capacity());
+  name->reserve(10000000);
+  printf("\n\n");
+
+// Test operator=(char*) and test operator []
+  char* tab = new char[11];
+  tab[0]='H';
+  tab[1]='e';
+  tab[2]='l';
+  tab[3]='l';
+  tab[4]='o';
+  tab[5]=' ';
+  tab[6]='W';
+  tab[7]='o';
+  tab[8]='r';
+  tab[9]='l';
+  tab[10]='d';
+  myString = tab;
+  printf("myString is now : ");
+  for (size_t j=0; j<(myString.length() + 1 ); j++)
+  {
+    printf("%c",myString[j]);
+  }
+  printf("\n\n");
+ 
+
+  // Test operator + using a string
+  String addition;
+  String myString2 = String(tab);
+  addition = (myString +  myString2).c_str();
+  printf("Addition is a String : ");
+  for (size_t k=0; k<addition.length(); k++)
+  {
+    printf("%c",addition[k]);
+  }
+  printf("\n\n");
 
 
   delete name;
   delete test;
+  delete tab;
 
   return 0;
 }
