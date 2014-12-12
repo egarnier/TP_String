@@ -323,8 +323,8 @@ const char& String::operator[] (size_t pos) const
 	}
 	else
 	{
-		char a = '\0';
-		return a;
+		char* a = '\0';
+		return a[0];
 	}
 }
 
@@ -336,8 +336,8 @@ char& String::operator[] (size_t pos)
 	}
 	else
 	{
-		char a = '\0';
-		return a;
+		char* a= '\0';
+		return a[0];
 	}
 }
 // ===========================================================================
