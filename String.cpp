@@ -207,7 +207,7 @@ void String::reserve (size_t n)
 	{
 		printf("The value is bigger than the maximum size allowed for a string, please change your value.\n");
 	}
-	else if(n > capacity_)
+	else if(n > capacity_ && n<=MAX_SIZE)
 	{
 		//printf("Hey je suis dans reserve :p ! \n");
 		char* tmp = new char[length_];
