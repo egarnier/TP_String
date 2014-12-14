@@ -215,7 +215,7 @@ void String::reserve (size_t n)
 		{
 			tmp[i]=str[i];
 		}
-		length_ = capacity_ = n;
+		capacity_ = n;
 		str = new char[capacity_];
 		for (size_t i=0; i<length_; i++)
 		{
@@ -225,7 +225,7 @@ void String::reserve (size_t n)
 	}
 	else
 	{
-		length_ = n;
+		n = n;
 	}
 }
 
