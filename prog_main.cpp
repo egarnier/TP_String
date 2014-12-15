@@ -48,7 +48,6 @@ printf("La capacity de la string myString vaut : %ld\n",myString1.capacity());
 printf("La chaine myString est : %s",myString1.c_str());
 printf("\n\n");
 
-/*
 
 // Constructor using c-str
 char* test = new char[5];
@@ -67,7 +66,7 @@ printf("\n\n");
 name->resize(2);
 printf("La longueur de la string name->resize(2) vaut : %ld\n",name->length());
 printf("La capacity de la string name->resize(2) vaut : %ld\n",name->capacity());
-printf("La chaine name->resize(2) est : %s",name->c_str()));
+printf("La chaine name->resize(2) est : %s",name->c_str());
 printf("\n\n");
 
 //Resize à 2 parametres
@@ -96,14 +95,16 @@ printf("La capacity de la string vaut donc : %ld\n",name->capacity());
 printf("\n\n");
 
 //Constructor using copy
-String myString1 = String(myString);
-printf("La longueur de la string vaut : %ld\n",myString1.length());
-printf("La capacity de la string vaut : %ld\n",myString1.capacity());
-printf("La chaine est : %s", name->c_str());
+String myString4;
+String myString3 = String(myString4);
+printf("La longueur de la string vaut : %ld\n",myString3.length());
+printf("La capacity de la string vaut : %ld\n",myString3.capacity());
+printf("La chaine est : %s", myString3.c_str());
+printf("\n\n");
 
 // Test method empty
 bool is_empty1 = myString.empty();
-bool is_empty2 = name->empty();
+bool is_empty2 = myString4.empty();
 if(is_empty1 == true){printf("La chaine 1 est vide.\n");}
 else{printf("La chaine 1 n'est pas vide.\n");}
 if(is_empty2 == true){printf("La chaine 2 est vide.\n");}
@@ -140,25 +141,27 @@ tab[9]='l';
 tab[10]='d';
 myString = tab;
 printf("myString is now : %s", myString.c_str());
+printf("\n\n");
+
 
 // Operator = using string
-myString = name->c_str();
+myString = myString4;
 printf("La longueur de la string myString vaut : %ld\n",myString.length());
 printf("La capacity de la string myString vaut : %ld\n",myString.capacity());
 printf("La chaine myString est : %s",myString.c_str());
 printf("\n\n");
 
 //operator+ using string
-myString = name[0] + test;
+myString = myString4 + test;
 printf("La longueur de la string + vaut : %ld\n",myString.length());
 printf("La capacity de la string + vaut : %ld\n",myString.capacity());
 printf("La chaine + est : %s",myString.c_str());
+printf("\n\n");
 
 delete[] tab;
 delete[] test;
 delete name;
 
-*/
 
 return 0;
 }
