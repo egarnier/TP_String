@@ -41,6 +41,13 @@ printf("La capacity de la string myString vaut : %ld\n",myString.capacity());
 printf("La chaine myString est : %s",myString.c_str());
 printf("\n\n");
 
+//operator + using char
+myString + 'c';
+printf("La longueur de la string myString vaut : %ld\n",myString.length());
+printf("La capacity de la string myString vaut : %ld\n",myString.capacity());
+printf("La chaine myString est : %s",myString.c_str());
+printf("\n\n");
+
 /*
 
 // Constructor using c-str

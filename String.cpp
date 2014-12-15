@@ -36,7 +36,7 @@ String::String(void)
 {
 	length_ = 4;
 	capacity_ = 7;
-	str = new char[4];
+	str = new char[capacity_];
 	str[0] = 't';
 	str[1] = 'o';
 	str[2] = 't';
@@ -90,7 +90,7 @@ String::String(const String& sentence)
 // ===========================================================================
 String::~String(void)
 {
-	delete str;
+	delete[] str;
 }
 
 // ===========================================================================
@@ -311,8 +311,8 @@ String String::operator+ (const char* rhs)
 {
     //Length de rhs
     size_t rhslength = 0;
-    for (size_t i=0; i<MAX_SIZE; i++)
-    {
+    for (size_t i=0; i<MAX_SIZE; i++) //while better ?
+    {+-+
         if (rhs[i] != '\0')
         {
             rhslength = rhslength + 1;
@@ -324,7 +324,7 @@ String String::operator+ (const char* rhs)
     }
 
     size_t l = length_ + rhslength;
-    char* tab = new char[l];
+    char* tab = new char[l];  //why a new here ?
 
     for (size_t i = 0; i<length_; i++)
     {
@@ -368,18 +368,20 @@ String String::operator+ (const String& myString)
 String String::operator+ (const char lhs)
 {
 	String new_str;
-	new_str.reserve(1+length_);
 
-	for (size_t i = 0; i < length_; ++i)
+	if (capacity_ >= length_+1)
 	{
-		new_str.c_str()[i] = str[i];
+		new_str.c_str()[length_] = lhs;
+		length_ = length_ + 1;
+	}
+	else
+	{
+		new_str.reserve(length_+1);
+		new_str.c_str()[length_] = lhs;
+		length_ = length_+1;
 	}
 
-	new_str[length_+1] = lhs;
-	length_= length_+1;
-
 	return new_str;
-	
 }
 
 // Operator []
