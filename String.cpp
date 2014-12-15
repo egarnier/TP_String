@@ -312,7 +312,7 @@ String String::operator+ (const char* rhs)
     //Length de rhs
     size_t rhslength = 0;
     for (size_t i=0; i<MAX_SIZE; i++) //while better ?
-    {+-+
+    {
         if (rhs[i] != '\0')
         {
             rhslength = rhslength + 1;
@@ -367,21 +367,19 @@ String String::operator+ (const String& myString)
 // Operator+ using char
 String String::operator+ (const char lhs)
 {
-	String new_str;
+	char new_str[length_+1];
 
-	if (capacity_ >= length_+1)
+	for (size_t i = 0; i < length_; ++i)
 	{
-		new_str.c_str()[length_] = lhs;
-		length_ = length_ + 1;
-	}
-	else
-	{
-		new_str.reserve(length_+1);
-		new_str.c_str()[length_] = lhs;
-		length_ = length_+1;
+		new_str[i] = str[i];
 	}
 
-	return new_str;
+	new_str[length_] = lhs;
+
+	String final = String(new_str);
+	length_ = length_ + 1;
+
+	return final;
 }
 
 // Operator []
