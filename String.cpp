@@ -27,23 +27,20 @@
 //                         Definition of static attributes
 // ===========================================================================
 size_t String::MAX_SIZE = 65535;
+
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
 
-// Constructor par défaut
+// Constructor by default
 String::String(void)
 {
-	length_ = 4;
-	capacity_ = length_ + 30;
-	str = new char[capacity_];
-	str[0] = 't';
-	str[1] = 'o';
-	str[2] = 't';
-	str[3] = 'o';
+	length_ = 0;
+	capacity_ = length_;
+	str = NULL;
 }
 
-// Constructor a partir d'une c-string
+// Constructor using a c-string as parameter
 String::String(const char* phrase)
 {
 	//Length
@@ -60,10 +57,10 @@ String::String(const char* phrase)
 		}
 	}
 
-	//Capacity
+	// Capacity
 	capacity_ = length_ + 30;
 	
-	//String
+	// String
 	str = new char[capacity_];
 	for (size_t j=0; j<length_; j++)
 	{
@@ -71,7 +68,7 @@ String::String(const char* phrase)
 	}
 }
 
-//copie constructor
+// Constructor by copy
 String::String(const String& sentence)
 {
 	length_ = sentence.length();
@@ -123,10 +120,15 @@ char* String::c_str(void) const
 	return str;
 }
 
-//Methods
+// Methods
 void String::resize(const size_t n)
 {
-	if (length_ > n) {
+	if (n>MAX_SIZE)
+	{
+		printf("Not allowed, please put a value inferior at %ld.\n",MAX_SIZE );
+	}
+	else if (length_ > n)
+	{
 		for (size_t i = n; i<length_; i++)
 		{
 			str[i] = '\0';
@@ -137,7 +139,12 @@ void String::resize(const size_t n)
 
 void String::resize(size_t n, char c)
 {
-	if (length_ < n) {
+	if (n>MAX_SIZE)
+	{
+		printf("Not allowed, please put a value inferior at %ld.\n",MAX_SIZE );
+	}
+	else if (length_ < n)
+	{
 		for (size_t i = length_; i<n; i++)
 		{
 			str[i] = c;
@@ -148,9 +155,8 @@ void String::resize(size_t n, char c)
 
 char& String::at (size_t pos)
 {
-	//Length de l
     size_t l = 0;
-    for (size_t i=0; i<MAX_SIZE; i++)
+    for (size_t i = 0; i < MAX_SIZE; i++)
     {
         if (str[i] != '\0')
         {
@@ -164,30 +170,16 @@ char& String::at (size_t pos)
 	if (pos > 0 && pos <= l)
 	{
 		return str[pos-1];
-	} else
+	} 
+	else
 	{
-		printf("Not accepted : The %ldth letter doesn't exist\n", pos);
+		printf("Not accepted : The %ldth letter doesn't exist.\n", pos);
 		char* a = new char[1];
 		*a = '\0';
 		return *a;
 	}
 	
 }
-
-void String::clear(void)
-{
-	if (length_ != 0)
-	{
-		str[0] = '\0';
-		length_ = 0;
-		printf("Chain has been deleted : it's now empty\n");
-	} 
-	else 
-	{
-		printf("Chain is already empty\n");
-	}
-}
-
 
 bool String::empty(void)
 {
@@ -201,33 +193,36 @@ bool String::empty(void)
 	return is_empty;
 }
 
+void String::clear(void)
+{
+	if (length_ != 0)
+	{
+		str[0] = '\0';
+		length_ = 0;
+	} 
+}
 
-//problem in this function, this function is for change the capacity only
+
 void String::reserve (size_t n)
 {
-	if(n>MAX_SIZE)
+	if(n > MAX_SIZE)
 	{
 		printf("The value is bigger than the maximum size allowed for a string, please change your value.\n");
 	}
-	else if(n > capacity_ && n<=MAX_SIZE)
+	else if(n > capacity_)
 	{
-		//printf("Hey je suis dans reserve :p ! \n");
 		char* tmp = new char[length_];
-		for(size_t i=0;i<length_;i++)
+		for(size_t i = 0; i < length_; i++)
 		{
-			tmp[i]=str[i];
+			tmp[i] = str[i];
 		}
 		capacity_ = n;
 		str = new char[capacity_];
-		for (size_t i=0; i<length_; i++)
+		for (size_t i = 0; i < length_; i++)
 		{
 			str[i] = tmp[i];
 		}
 		delete tmp;
-	}
-	else
-	{
-		n = n;
 	}
 }
 
@@ -260,7 +255,7 @@ String& String::operator=(char c)
 String& String::operator= (const char* s)
 {
 	size_t s_length = 0;
-	for(int k=0; k<66000; k++)
+	for(size_t k = 0; k < MAX_SIZE; k++)
 	{
 		if (s[k] != '\0')
 		{
@@ -271,23 +266,20 @@ String& String::operator= (const char* s)
 			break;
 		}
 	}
-	if(s_length>MAX_SIZE)
-	{
-		printf("The chain is bigger than the maximum size allowed, please change your chain.\n");
-	}
-	else if(s_length>capacity_ && s_length<=MAX_SIZE)
+	if(s_length > capacity_)
 	{
 		this[0].reserve(s_length);
 		for(size_t i = 0 ; i<capacity_ ; i++)
 		{
-			str[i]=s[i];
+			str[i] = s[i];
 		}
 	}
-	else{
+	else
+	{
 		length_ = s_length;
-			for(size_t j = 0 ; j<capacity_ ; j++)
+		for(size_t j = 0 ; j < capacity_ ; j++)
 		{
-			str[j]=s[j];
+			str[j] = s[j];
 		}
 	}
 	return *this;
@@ -310,12 +302,40 @@ String& String::operator= (const String& str_)
 	return *this;
 }
 
-//Operator+ using char*
+// Operator+ using char
+String String::operator+ (const char lhs)
+{
+	if(length_ + 1 > MAX_SIZE)
+	{
+		printf("The String is bigger than Max_Size.\n");
+		return *this;
+	}
+	else
+	{
+		char* new_str = new char[length_+1];
+
+		for (size_t i = 0; i < length_; ++i)
+		{
+			new_str[i] = str[i];
+		}
+
+		new_str[length_] = lhs;
+
+		String final = String(new_str);
+		length_ = length_ + 1;
+
+		delete[] new_str;
+
+		return final;
+	}
+}
+
+// Operator+ using char*
 String String::operator+ (const char* rhs)
 {
-    //Length de rhs
+    // Length of rhs
     size_t rhslength = 0;
-    for (size_t i=0; i<MAX_SIZE; i++) 
+    for (size_t i = 0; i < MAX_SIZE; i++) 
     {
         if (rhs[i] != '\0')
         {
@@ -338,8 +358,8 @@ String String::operator+ (const char* rhs)
     {
         tab[j] = rhs[j-length_];
     }
-
     String final = String(tab);
+    length_ = l;
     delete tab;
 
     return final;
@@ -348,48 +368,27 @@ String String::operator+ (const char* rhs)
 // Operator+ using String
 String String::operator+ (const String& myString)
 {
-	String new_str;
-	if((myString.length() + length_)>MAX_SIZE)
+	size_t final_length = (length_ + myString.length());
+	char* new_str = new char[final_length];
+
+	for(size_t i = 0; i < length_;i++)
 	{
-		printf("Your String is bigger than the maximum size allowed, pleased change your String.\n");
+		new_str[i] = this->c_str()[i];
 	}
-	else
+	for(size_t j = 0; j < myString.length(); j++)
 	{
-		new_str.reserve(myString.length() + length_);
-		for(size_t i=0;i<length_;i++)
-		{
-			new_str.c_str()[i]=this->c_str()[i];
-		}
-		for(size_t j=0;j<myString.length();j++)
-		{
-			new_str.c_str()[j+length_]=myString.c_str()[j];
-		}
+		new_str[j+length_] = myString.c_str()[j];
 	}
-	return new_str;
-}
-
-// Operator+ using char
-String String::operator+ (const char lhs)
-{
-	char new_str[length_+1];
-
-	for (size_t i = 0; i < length_; ++i)
-	{
-		new_str[i] = str[i];
-	}
-
-	new_str[length_] = lhs;
-
+	
 	String final = String(new_str);
-	length_ = length_ + 1;
-
 	return final;
 }
+
 
 // Operator []
 const char& String::operator[] (size_t pos) const
 {
-	if(pos<length_)
+	if(pos < length_)
 	{
 		return str[pos];
 	}
@@ -402,13 +401,13 @@ const char& String::operator[] (size_t pos) const
 
 char& String::operator[] (size_t pos)
 {
-	if(pos<length_)
+	if(pos < length_)
 	{
 		return str[pos];
 	}
 	else
 	{
-		char* a= '\0';
+		char* a = '\0';
 		return a[0];
 	}
 }
