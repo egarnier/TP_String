@@ -234,21 +234,21 @@ void String::reserve (size_t n)
 //Operator= using char
 String& String::operator=(char c)
 {
+	length_ = 1;
+    capacity_ = length_ + 30;
+    
     if (str == NULL)
     {
-    	length_ = 1;
-    	str = new char[length_];
+       	str = new char[length_];
     	*str = c;
     	*(str + 1) = '\0';
-    	return *this;
 	} 
 	else
 	{
-		length_ = 1;
 	    *str = c;
     	*(str + 1) = '\0';
-    	return *this;
-	}
+    }
+    return *this;
 }
 
 // Operator= using char*
@@ -305,13 +305,18 @@ String& String::operator= (const String& str_)
 // Operator+ using char
 String String::operator+ (const char lhs)
 {
+	// Length and capacity of the final String
 	if(length_ + 1 > MAX_SIZE)
 	{
 		printf("The String is bigger than Max_Size.\n");
 		return *this;
 	}
-	else
+	else if((length_ + 1)>capacity_)
 	{
+		this->reserve(length_+1);
+	}
+	
+	// Create a char* for the final String
 		char* new_str = new char[length_+1];
 
 		for (size_t i = 0; i < length_; ++i)
@@ -321,13 +326,12 @@ String String::operator+ (const char lhs)
 
 		new_str[length_] = lhs;
 
+	// Create the final String
 		String final = String(new_str);
 		length_ = length_ + 1;
 
-		delete[] new_str;
-
+		delete new_str;
 		return final;
-	}
 }
 
 // Operator+ using char*
@@ -347,29 +351,53 @@ String String::operator+ (const char* rhs)
         }
     }
 
-    size_t l = length_ + rhslength;
-    char* tab = new char[l];  
+	// Length and capacity of the final String
+    size_t final_length = length_ + rhslength;
+    if(final_length > MAX_SIZE)
+    {
+    	printf("The new String is bigger than the maximum size allowed, please change your String.\n");
+    }
+    else if(final_length > capacity_)
+    {
+    	this->reserve(final_length);
+    }
+    
+    // Create a char* for the final String
+    char* tab = new char[capacity_];  
 
     for (size_t i = 0; i<length_; i++)
     {
         tab[i] = str[i];
     }   
-    for (size_t j = length_; j<l; j++)
+    for (size_t j = length_; j<final_length; j++)
     {
         tab[j] = rhs[j-length_];
     }
+    
+    // Create the final String
     String final = String(tab);
-    length_ = l;
+    
     delete tab;
-
     return final;
 }
 
 // Operator+ using String
 String String::operator+ (const String& myString)
 {
+	// Length and capacity of the final String
 	size_t final_length = (length_ + myString.length());
-	char* new_str = new char[final_length];
+	
+	if(final_length > MAX_SIZE)
+    {
+    	printf("The new String is bigger than the maximum size allowed, please change your String.\n");
+    }
+    else if(final_length > capacity_)
+    {
+    	this->reserve(final_length);
+    }
+	
+	// Create a char* for the final String
+	char* new_str = new char[capacity_];
 
 	for(size_t i = 0; i < length_;i++)
 	{
@@ -380,7 +408,10 @@ String String::operator+ (const String& myString)
 		new_str[j+length_] = myString.c_str()[j];
 	}
 	
+	// Create the final String
 	String final = String(new_str);
+	
+	delete new_str;
 	return final;
 }
 
