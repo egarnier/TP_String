@@ -311,7 +311,7 @@ String String::operator+ (const char* rhs)
 {
     //Length de rhs
     size_t rhslength = 0;
-    for (size_t i=0; i<MAX_SIZE; i++) //while better ?
+    for (size_t i=0; i<MAX_SIZE; i++) 
     {
         if (rhs[i] != '\0')
         {
@@ -324,7 +324,7 @@ String String::operator+ (const char* rhs)
     }
 
     size_t l = length_ + rhslength;
-    char* tab = new char[l];  //why a new here ?
+    char* tab = new char[l];  
 
     for (size_t i = 0; i<length_; i++)
     {
