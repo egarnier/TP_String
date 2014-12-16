@@ -35,7 +35,7 @@ size_t String::MAX_SIZE = 65535;
 String::String(void)
 {
 	length_ = 4;
-	capacity_ = 7;
+	capacity_ = length_ + 30;
 	str = new char[capacity_];
 	str[0] = 't';
 	str[1] = 'o';
@@ -75,12 +75,14 @@ String::String(const char* phrase)
 String::String(const String& sentence)
 {
 	length_ = sentence.length();
+	
+	capacity_ = length_ + 30;
 
-	str = new char[length_];
+	str = new char[capacity_];
 
 	for (size_t i = 0; i < length_; ++i)
 	{
-		str[i] = sentence.str[i];
+		str[i] = sentence.c_str()[i];
 	}
 
 }
