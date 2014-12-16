@@ -48,10 +48,11 @@ class String
     //                            Accessors: getters
     // =======================================================================
     size_t max_size(void) const;
+    size_t size(void) const;
     size_t length(void) const;
     size_t capacity(void) const;
     char* c_str(void) const;
-    size_t size(void) const;
+    
 
     // =======================================================================
     //                            Accessors: setters
@@ -68,20 +69,19 @@ class String
     void resize(size_t n, char c);
     char& at (size_t pos);
     bool empty(void);
-    void reserve (size_t n);
     void clear(void);
+    void reserve (size_t n);
+  
+    String& operator= (char c); 
+    String& operator= (const char* s);
+    String& operator= (const String& str_); 
 
-    String& operator= (char c); //Sam
-    String& operator= (const char* s);//Elo
-    String& operator= (const String& str_); //Arthur
-
-    String operator+ (const char* rhs);//Sam
-    String operator+ (const String& myString);//Elo
-    String operator+ (const char lhs);//Arthur
-
-
-    const char& operator[] (size_t pos) const;//Elo
-    char& operator[] (size_t pos);//Elo
+    String operator+ (const char lhs);
+    String operator+ (const char* rhs);
+    String operator+ (const String& myString);
+    
+    const char& operator[] (size_t pos) const;
+    char& operator[] (size_t pos);
     
     
     // =======================================================================
