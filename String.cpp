@@ -296,11 +296,13 @@ String& String::operator= (const char* s)
 // Operator= using String
 String& String::operator= (const String& str_)
 {
-	capacity_ = str_.length();
+	length_ = str_.length();
+
+	capacity_ = length_ + 30;
 
 	str = new char[capacity_];
 
-	for (size_t i = 0; i < capacity_; ++i)
+	for (size_t i = 0; i < length_; i++)
 	{
 		str[i] = str_[i];
 	}
