@@ -42,85 +42,115 @@ test[1]='a';
 test[2]='r';
 test[3]='i';
 test[4]='p';
-String* myString1 = new String(test);
-String myString2 = String(myString1[0]);
+String myString1 = String(test);
+String myString2 = String(myString1);
 
-// Constructor by default
-printf("La longueur de la string myString vaut : %ld\n",myString.length());
-printf("La capacity de la string myString vaut : %ld\n",myString.capacity());
-printf("La chaine myString est : %s",myString.c_str());
+// Constructor by default : myString (empty)
+printf("This String was created using a constructor by default :\n");
+printf("The String lentgth is : %ld\n",myString.length());
+printf("The String capacity is : %ld\n",myString.capacity());
+printf("The String is : %s",myString.c_str());
 printf("\n\n");
 
-// Constructor using c-str
-printf("La longueur de la string name vaut : %ld\n",myString1->length());
-printf("La capacity de la string name vaut : %ld\n",myString1->capacity());
-printf("La chaine name est : %s",myString1->c_str());
+// Constructor using c-str : myString1 (marip)
+printf("This String was created using a constructor that takes a c_str as parameter :\n");
+printf("The String lentgth is : %ld\n",myString1.length());
+printf("The String capacity is : %ld\n",myString1.capacity());
+printf("The String is : %s",myString1.c_str());
 printf("\n\n");
 
-//Constructor using copy
-printf("La longueur de la string vaut : %ld\n",myString2.length());
-printf("La capacity de la string vaut : %ld\n",myString2.capacity());
-printf("La chaine est : %s", myString2.c_str());
+//Constructor using copy : myString2 (marip)
+printf("This String was created using a constructor by copy : (coping the previous String)\n");
+printf("The String lentgth is : %ld\n",myString2.length());
+printf("The String capacity is : %ld\n",myString2.capacity());
+printf("The String is : %s",myString2.c_str());
 printf("\n\n");
 
-// Resize using one parameter
-myString1->resize(2);
-printf("La longueur de la string myString1->resize(2) vaut : %ld\n",myString1->length());
-printf("La capacity de la string myString1->resize(2) vaut : %ld\n",myString1->capacity());
-printf("La chaine myString1->resize(2) est : %s", myString1->c_str());
+// Resize using 1 parameter : myString1 (ma)
+myString1.resize(2);
+printf("The String marip is resized into ma :\n");
+printf("The String lentgth is : %ld\n",myString1.length());
+printf("The String capacity is : %ld\n",myString1.capacity());
+printf("The String is : %s",myString1.c_str());
 printf("\n\n");
 
-// Resize using 2 parameters
-myString1->resize(3, 'r');
-myString1->resize(4, 'i');
-myString1->resize(5, 'e');
-printf("La longueur de la string myString1->resize(n, 'c') vaut : %ld\n",myString1->length());
-printf("La capacity de la string myString1->resize(n, 'c') vaut : %ld\n",myString1->capacity());
-printf("La chaine myString1->resize(n, 'c') est : %s",myString1->c_str());
+// Resize using 2 parameters : myString1 (marie)
+myString1.resize(3, 'r');
+myString1.resize(4, 'i');
+myString1.resize(5, 'e');
+printf("The String ma is resized into marie :\n");
+printf("The String lentgth is : %ld\n",myString1.length());
+printf("The String capacity is : %ld\n",myString1.capacity());
+printf("The String is : %s",myString1.c_str());
 printf("\n\n");
 
-// At
-printf("La troisieme lettre de la chaine est %c\n",myString1->at(3));
-printf("%c\n\n",myString1->at(8));
+// At : myString1 (3rd letter : r ; 8th letter doesn't exist) 
+printf("The 3rd letter of the String marie is : %c\n",myString1.at(3));
+printf("%c\n",myString1.at(8));
 
-// Empty
+// Empty : myString (empty=true) ; myString2 (empty=false)
 bool is_empty1 = myString.empty();
 bool is_empty2 = myString2.empty();
-if(is_empty1 == true){printf("La chaine 1 est vide.\n");}
-else{printf("La chaine 1 n'est pas vide.\n");}
-if(is_empty2 == true){printf("La chaine 2 est vide.\n");}
-else{printf("La chaine 2 n'est pas vide.\n");}
-printf("\n\n");
+printf("This String should be empty :\n");
+if(is_empty1 == true)
+{
+    printf("The String is empty.\n");
+    
+}
+else{
+    printf("The String is not empty.\n");
+    
+}
+printf("This String should not be empty :\n");
+if(is_empty2 == true)
+{
+    printf("The String is empty.\n");
+    
+}
+else
+{
+    printf("The String is not empty.\n");
+    
+}
+printf("\n");
 
-// Clear an empty chain
+// Clear an empty chain : myString (empty)
 myString.clear();
-printf("La longueur de la string vaut donc : %ld\n",myString.length());
-printf("La capacity de la string vaut donc : %ld\n",myString.capacity());
+printf("This String was empty and has been cleared :\n");
+printf("The String length is : %ld\n",myString.length());
+printf("The String capacity is : %ld\n",myString.capacity());
+printf("The String is : %s", myString.c_str());
 printf("\n\n");
 
-// Clear a full chain
+// Clear a full chain : myString2 (marip-->NULL)
 myString2.clear();
-printf("La longueur de la string vaut donc : %ld\n",myString2.length());
-printf("La capacity de la string vaut donc : %ld\n",myString2.capacity());
+printf("This String was marip and has been cleared :\n");
+printf("The String length is : %ld\n",myString2.length());
+printf("The String capacity is : %ld\n",myString2.capacity());
+printf("The String is : %s", myString2.c_str());
 printf("\n\n");
 
-// Reserve
-myString1->reserve(20);
-printf("The new value of the capacity of name is %ld.\n",myString1->capacity());
-myString1->reserve(50);
-printf("The new value of the capacity of name is %ld.\n",myString1->capacity());
-myString1->reserve(10000000);
-printf("\n\n");
+// Reserve : myString1 (capacity : 35 --> 35 --> 50 --> ERROR)
+myString1.reserve(20);
+printf("The string marip had a capacity of 35 and we applied reserve(20) :\n");
+printf("The new value of the capacity of marip is %ld.\n",myString1.capacity());
+myString1.reserve(50);
+printf("The string marip had a capacity of 35 and we applied reserve(50) :\n");
+printf("The new value of the capacity of marip is %ld.\n",myString1.capacity());
+printf("The string marip had a capacity of 50 and we applied reserve(100000000) :\n");
+myString1.reserve(10000000);
+printf("\n");
 
-// Operator= using char
+// Operator= using char : myString (NULL --> 'c')
 myString = 'c';
-printf("La longueur de la string myString vaut : %ld\n",myString.length());
-printf("La capacity de la string myString vaut : %ld\n",myString.capacity());
-printf("La chaine myString est : %s",myString.c_str());
+printf("The String was empty and we applied operator = using a char ('c')\n");
+printf("The String length is : %ld\n",myString.length());
+printf("The String capacity is : %ld\n",myString.capacity());
+printf("The String is : %s", myString.c_str());
 printf("\n\n");
 
 
-// Operator= using (char*) 
+// Operator= using (char*) : myString2 (marip --> Hello World)
 char* tab = new char[11];
 tab[0]='H';
 tab[1]='e';
@@ -134,47 +164,53 @@ tab[8]='r';
 tab[9]='l';
 tab[10]='d';
 myString2 = tab;
-printf("myString2 is now : %s", myString2.c_str());
+printf("The String was marip and we applied operator = using a char* (Hello World)\n");
+printf("The String length is : %ld\n",myString2.length());
+printf("The String capacity is : %ld\n",myString2.capacity());
+printf("The String is : %s", myString2.c_str());
 printf("\n\n");
 
-// Operator = using string
+// Operator = using string : myString ( c --> Hello World)
 myString = myString2;
-printf("La longueur de la string myString vaut : %ld\n",myString.length());
-printf("La capacity de la string myString vaut : %ld\n",myString.capacity());
-printf("La chaine myString est : %s",myString.c_str());
+printf("The String was c and we applied operator = using a String (Hello World)\n");
+printf("The String length is : %ld\n",myString.length());
+printf("The String capacity is : %ld\n",myString.capacity());
+printf("The String is : %s", myString.c_str());
 printf("\n\n");
 
-// Operator + using char
+// Operator + using char : myString3 (Hello Worldc)
 String myString3 = myString + 'c';
-printf("La longueur de la string myString vaut : %ld\n",myString3.length());
-printf("La capacity de la string myString vaut : %ld\n",myString3.capacity());
-printf("La chaine myString est : %s",myString3.c_str());
+printf("The String was created with operator + using a char (Hello World + c)\n");
+printf("The String length is : %ld\n",myString3.length());
+printf("The String capacity is : %ld\n",myString3.capacity());
+printf("The String is : %s", myString3.c_str());
 printf("\n\n");
 
-// Operator + using (char*)
+// Operator + using (char*) : myString4 (totoHello World)
 String toto = String("toto");
 String myString4 = toto + tab;
-printf("La longueur de la string myString vaut : %ld\n",myString4.length());
-printf("La capacity de la string myString vaut : %ld\n",myString4.capacity());
-printf("La chaine myString est : %s",myString4.c_str());
+printf("The String was created with operator + using a char* (toto + Hello World)\n");
+printf("The String length is : %ld\n",myString4.length());
+printf("The String capacity is : %ld\n",myString4.capacity());
+printf("The String is : %s", myString4.c_str());
 printf("\n\n");
 
-// Operator+ using String
+// Operator+ using String : myString5 (info3bim)
 String info = String("info");
 String bim = String("3bim");
-String myString5;
-myString5 = info + bim;
-printf("La longueur de la string + vaut : %ld\n",myString5.length());
-printf("La capacity de la string + vaut : %ld\n",myString5.capacity());
-printf("La chaine + est : %s",myString5.c_str());
+String myString5 = info + bim;
+printf("The String was created with operator + using a String (info + 3bim)\n");
+printf("The String length is : %ld\n",myString5.length());
+printf("The String capacity is : %ld\n",myString5.capacity());
+printf("The String is : %s", myString5.c_str());
 printf("\n\n");
 
-// Operator []
-char a = myString3[2];
-printf("Le 3ème caractère de la chaine est %c.\n", a);
+// Operator [] : info (f)
+char a = info[2];
+printf("The 3rd letter of info is %c (using operator [])\n",a);
 
-delete[] tab;
-delete[] test;
+delete tab;
+delete test;
 
 return 0;
 }
